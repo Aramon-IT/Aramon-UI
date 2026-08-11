@@ -1,12 +1,11 @@
 import type { NextConfig } from "next";
 
-const repository = process.env.GITHUB_REPOSITORY?.split("/")[1];
-const githubPagesBasePath = process.env.GITHUB_ACTIONS === "true" && repository ? `/${repository}` : "";
+const siteBasePath = process.env.ARAMON_SITE_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
-  basePath: githubPagesBasePath,
+  basePath: siteBasePath,
   env: {
-    NEXT_PUBLIC_BASE_PATH: githubPagesBasePath,
+    NEXT_PUBLIC_BASE_PATH: siteBasePath,
   },
   output: "export",
   trailingSlash: true,
