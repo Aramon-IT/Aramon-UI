@@ -8,6 +8,7 @@ import { Frame } from "@aramon/ui/frame";
 import { FieldHint, FieldLabel, Input, Textarea } from "@aramon/ui/input";
 import { ProgressTrace } from "@aramon/ui/progress-trace";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@aramon/ui/tabs";
+import { Brand } from "../_components/brand";
 
 export const metadata: Metadata = {
   title: "Components · Aramon UI",
@@ -38,7 +39,7 @@ export default function ComponentsPage() {
   return (
     <main className="catalog-page min-h-screen bg-aramon-desk text-aramon-ink">
       <header className="route-bar">
-        <Link href="/" className="docs-brand"><span className="docs-mark">A</span><span>Aramon UI</span></Link>
+        <Brand />
         <nav aria-label="Library navigation"><Link href="/components" aria-current="page">Components</Link><Link href="/prompts">Prompts</Link></nav>
       </header>
 

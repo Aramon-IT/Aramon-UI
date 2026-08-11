@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { buttonClasses } from "@aramon/ui/button";
 import { Frame } from "@aramon/ui/frame";
+import { Brand } from "./_components/brand";
 import { ComponentLab } from "./_components/component-lab";
 
 const packages = [
@@ -22,10 +23,7 @@ export default function Home() {
   return (
     <main className="docs-shell min-h-screen bg-aramon-desk text-aramon-ink">
       <aside className="docs-rail">
-          <Link href="/" className="docs-brand" aria-label="Aramon UI home">
-          <span className="docs-mark">A</span>
-          <span>Aramon UI</span>
-          </Link>
+          <Brand />
         <nav aria-label="Documentation sections">
           <a href="#architecture">01 Architecture</a>
           <a href="#components">02 Components</a>

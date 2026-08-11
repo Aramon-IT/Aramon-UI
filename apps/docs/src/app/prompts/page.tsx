@@ -3,6 +3,7 @@ import Link from "next/link";
 import { aramonApplicationPrompt, aramonComponentPrompt, aramonSystemPrompt } from "@aramon/prompts/ui-system";
 import { aramonMediumAnimationPrompt, aramonMediumReviewPrompt } from "@aramon/prompts/medium-animation";
 import { aramonReviewPrompt } from "@aramon/prompts/review";
+import { Brand } from "../_components/brand";
 
 export const metadata: Metadata = {
   title: "AI Prompts · Aramon UI",
@@ -21,7 +22,7 @@ const prompts = [
 export default function PromptsPage() {
   return (
     <main className="prompts-page min-h-screen bg-aramon-desk text-aramon-ink">
-      <header className="route-bar"><Link href="/" className="docs-brand"><span className="docs-mark">A</span><span>Aramon UI</span></Link><nav aria-label="Library navigation"><Link href="/components">Components</Link><Link href="/prompts" aria-current="page">Prompts</Link></nav></header>
+      <header className="route-bar"><Brand /><nav aria-label="Library navigation"><Link href="/components">Components</Link><Link href="/prompts" aria-current="page">Prompts</Link></nav></header>
       <div className="prompts-layout">
         <header className="prompts-hero"><p>ARAMON / AGENT CONTRACTS</p><h1>Prompts that<br />protect identity.</h1><p>Copy-ready design, implementation, animation, and review instructions for AI agents working with Aramon.</p></header>
         <nav className="prompt-index" aria-label="Prompt index">{prompts.map(([name], index) => <a key={name} href={`#prompt-${index + 1}`}><span>0{index + 1}</span>{name}</a>)}</nav>

@@ -28,7 +28,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .docs-brand { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
-.docs-mark { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--aramon-hairline-strong); font-family: var(--aramon-display); }
+.docs-mark { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--aramon-hairline-strong); }
+.docs-mark img { display: block; width: 21px; height: 21px; object-fit: contain; }
 .docs-rail nav { margin-top: 84px; display: grid; }
 .docs-rail nav a { min-height: 44px; display: flex; align-items: center; border-top: 1px solid var(--aramon-hairline); color: var(--aramon-ink-3); text-decoration: none; font: 10px var(--aramon-mono); text-transform: uppercase; letter-spacing: .08em; }
 .docs-rail nav a:last-child { border-bottom: 1px solid var(--aramon-hairline); }
