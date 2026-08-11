@@ -1,0 +1,20 @@
+{
+  "name": "@aramon/prompts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": ["src"],
+  "exports": {
+    ".": "./src/index.ts",
+    "./ui-system": "./src/ui-system.ts",
+    "./medium-animation": "./src/medium-animation.ts",
+    "./review": "./src/review.ts",
+    "./markdown/*": "./src/markdown/*"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

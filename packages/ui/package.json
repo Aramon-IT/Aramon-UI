@@ -1,0 +1,30 @@
+{
+  "name": "@aramon/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./button": "./src/button.tsx",
+    "./checkbox": "./src/checkbox.tsx",
+    "./dialog": "./src/dialog.tsx",
+    "./focus-vessel": "./src/focus-vessel.tsx",
+    "./frame": "./src/frame.tsx",
+    "./input": "./src/input.tsx",
+    "./progress-trace": "./src/progress-trace.tsx",
+    "./tabs": "./src/tabs.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "dependencies": {
+    "@aramon/medium": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "typescript": "^5.9.3"
+  }
+}

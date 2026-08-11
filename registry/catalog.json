@@ -1,0 +1,88 @@
+{
+  "$schema": "./schema.json",
+  "name": "aramon",
+  "version": 1,
+  "items": [
+    {
+      "name": "base",
+      "type": "foundation",
+      "description": "Aramon tokens, themes, fonts, and material utilities.",
+      "files": ["packages/tokens/src/theme.css"]
+    },
+    {
+      "name": "button",
+      "type": "component",
+      "description": "Lamp, reflective, and quiet action hierarchy.",
+      "requires": ["base"],
+      "files": ["packages/ui/src/button.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "frame",
+      "type": "component",
+      "description": "Stable architectural surface.",
+      "requires": ["base"],
+      "files": ["packages/ui/src/frame.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "input",
+      "type": "component",
+      "description": "Input, textarea, label, and hint field primitives.",
+      "requires": ["base"],
+      "files": ["packages/ui/src/input.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "checkbox",
+      "type": "component",
+      "description": "Accessible native choice with Aramon treatment.",
+      "requires": ["base"],
+      "files": ["packages/ui/src/checkbox.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "tabs",
+      "type": "component",
+      "description": "Keyboard-navigable tab set.",
+      "requires": ["base"],
+      "files": ["packages/ui/src/tabs.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "progress-trace",
+      "type": "component",
+      "description": "Quiet linear progress signal.",
+      "requires": ["base"],
+      "files": ["packages/ui/src/progress-trace.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "medium-surface",
+      "type": "component",
+      "description": "Client boundary for the living Medium material.",
+      "requires": ["base"],
+      "packages": ["@aramon/medium"],
+      "files": ["packages/medium/src/core.ts", "packages/medium/src/engine.ts", "packages/medium/src/react.tsx"]
+    },
+    {
+      "name": "focus-vessel",
+      "type": "component",
+      "description": "Primary focus object with stir-mode Medium physics.",
+      "requires": ["base", "medium-surface", "button"],
+      "files": ["packages/ui/src/focus-vessel.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "dialog",
+      "type": "component",
+      "description": "Native top-layer dialog with press-mode Medium physics.",
+      "requires": ["base", "medium-surface", "button"],
+      "files": ["packages/ui/src/dialog.tsx", "packages/ui/src/lib/cn.ts"]
+    },
+    {
+      "name": "agent-prompts",
+      "type": "prompt",
+      "description": "UI, component, review, and Medium animation instructions for AI agents.",
+      "packages": ["@aramon/prompts"],
+      "files": [
+        "packages/prompts/src/ui-system.ts",
+        "packages/prompts/src/medium-animation.ts",
+        "packages/prompts/src/review.ts"
+      ]
+    }
+  ]
+}
