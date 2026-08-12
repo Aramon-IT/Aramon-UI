@@ -1,7 +1,7 @@
 import type { HTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes, TextareaHTMLAttributes } from "react";
 import { cn } from "./lib/cn";
 
-const controlClass = "min-h-11 w-full rounded-[7px] border border-[var(--aramon-hairline-strong)] bg-[var(--aramon-well)] px-3.5 text-sm text-aramon-ink outline-none transition duration-300 ease-aramon placeholder:text-aramon-ink-3 focus:border-[var(--aramon-ink-2)] focus:bg-aramon-frame focus:ring-4 focus:ring-[var(--aramon-hairline)] disabled:cursor-not-allowed disabled:opacity-45";
+export const controlClass = "min-h-11 w-full rounded-[7px] border border-[var(--aramon-hairline-strong)] bg-[var(--aramon-well)] px-3.5 text-sm text-aramon-ink outline-none transition duration-300 ease-aramon placeholder:text-aramon-ink-3 focus:border-[var(--aramon-ink-2)] focus:bg-aramon-frame focus:ring-4 focus:ring-[var(--aramon-hairline)] aria-[invalid=true]:border-[var(--aramon-critical)] aria-[invalid=true]:ring-4 aria-[invalid=true]:ring-[color-mix(in_srgb,var(--aramon-critical)_12%,transparent)] disabled:cursor-not-allowed disabled:opacity-45";
 
 export function Input({ className, ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return <input className={cn(controlClass, className)} {...props} />;
@@ -17,4 +17,8 @@ export function FieldLabel({ className, ...props }: LabelHTMLAttributes<HTMLLabe
 
 export function FieldHint({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
   return <p className={cn("m-0 text-[11px] leading-relaxed text-aramon-ink-3", className)} {...props} />;
+}
+
+export function FieldError({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
+  return <p role="alert" className={cn("m-0 text-[11px] leading-relaxed text-[var(--aramon-critical)]", className)} {...props} />;
 }

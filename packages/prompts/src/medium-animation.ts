@@ -7,7 +7,8 @@ PHYSICAL MODEL
 - Pointer energy is injected only while the pointer is inside that vessel and uses local coordinates.
 - Energy never crosses from one component into another.
 - Stir mode injects energy from pointer movement. Press mode injects one local impulse. Off mode renders static material.
-- The simulation diffuses energy and returns to equilibrium. It does not loop ambiently.
+- Canvas physics diffuses energy and returns to equilibrium. It does not loop ambiently.
+- A subtle transform-only CSS optical drift may loop as the dependable visual fallback. It must stop for reduced motion and never deform content.
 
 VERIFIED PHYSICS VALUES
 - Cell size: 10 CSS pixels.
@@ -16,7 +17,7 @@ VERIFIED PHYSICS VALUES
 - Height damping: 0.984.
 - Field smoothing: 0.14 with one smoothing pass.
 - Light direction: x 0.55, y -0.83.
-- Quiet threshold: 0.02.
+- Quiet threshold: 0.0012. Local impulses must remain alive long enough to read on large vessels.
 - Render supersampling: 2x.
 - Optical blur passes: 2.
 - Highlight gain after blur: 1.5.
@@ -33,7 +34,7 @@ DIRECTOR AND PERFORMANCE
 
 PERFORMANCE TIERS
 - Full: pointer stir and press with complete rendering.
-- Reduced: press-only interaction and reduced work.
+- Reduced: retain pointer stir where a pointer is present, lower the impulse, and reduce work. Touch remains press-driven.
 - Flat: no simulation; retain static translucent material.
 - Select the tier from prefers-reduced-motion, save-data, input modality, measured frame cost, and available browser features.
 - Demote when sustained measured work exceeds the budget; never oscillate repeatedly between tiers.
@@ -48,10 +49,11 @@ REACT AND NEXT.JS BOUNDARY
 
 VISUAL CONTRACT
 - Medium is neutral translucent black in light mode.
+- Preserve environmental transmission: the scene behind Medium must remain recognizable after blur. Use approximately 0.30-0.57 neutral material alpha by density instead of an opaque card.
 - Mood color affects only glint, light response, and subtle dark-mode undertone.
 - Content is always above the render layer at a stable z-index.
 - Text is never refracted, blurred, displaced, or magnified.
-- Support backdrop-filter and static fallbacks.
+- Support backdrop-filter, a transform-only CSS optical drift fallback, and a static reduced-motion fallback.
 - Preserve visible focus and pointer interaction for controls inside the vessel.
 
 DELIVERABLES
@@ -63,6 +65,7 @@ Return:
 5. Cleanup tests
 6. Stability and performance tests
 7. Reduced-motion and hydration tests
+8. Cross-browser fallback test without ResizeObserver, IntersectionObserver, canvas, or hover input
 `.trim();
 
 export const aramonMediumReviewPrompt = String.raw`
@@ -76,7 +79,8 @@ Reject the implementation if:
 - offscreen or detached surfaces continue consuming work;
 - pointer coordinates are not local to the vessel;
 - energy crosses between components;
-- animation loops without user intent;
+- canvas physics loops without user intent;
+- the CSS optical fallback moves when reduced motion is requested;
 - reduced-motion or flat fallbacks are missing;
 - light-mode Medium becomes an opaque mood-colored card.
 

@@ -12,14 +12,16 @@ const WAVE = 0.42;
 const DAMP_V = 0.968;
 const DAMP_H = 0.984;
 const SMOOTH = 0.14;
-const QUIET = 0.02;
+const QUIET = 0.0012;
 const SUPERSAMPLE = 2;
 const GAIN = 1.5;
 
 function detectTier(): PhysicsTier {
   const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches || connection?.saveData) return "flat";
-  if (matchMedia("(hover: none)").matches || (navigator.hardwareConcurrency || 8) <= 4) return "reduced";
+  const reducedMotion = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const noHover = typeof matchMedia === "function" && matchMedia("(hover: none)").matches;
+  if (reducedMotion || connection?.saveData) return "flat";
+  if (noHover || (navigator.hardwareConcurrency || 8) <= 4) return "reduced";
   return "full";
 }
 
@@ -103,8 +105,8 @@ class MediumPool implements MediumController {
   private lastX = 0;
   private lastY = 0;
   private rect: DOMRect | null = null;
-  private resizeObserver: ResizeObserver;
-  private intersectionObserver: IntersectionObserver;
+  private resizeObserver: ResizeObserver | null = null;
+  private intersectionObserver: IntersectionObserver | null = null;
   private tier: PhysicsTier;
   private interaction: MediumInteraction;
   priority = 0;
@@ -112,28 +114,46 @@ class MediumPool implements MediumController {
   constructor(private element: HTMLElement, options: MediumPhysicsOptions) {
     this.tier = detectTier();
     this.interaction = options.interaction ?? "stir";
-    if (this.tier === "reduced" && this.interaction === "stir") this.interaction = "press";
 
     this.canvas = document.createElement("canvas");
     this.canvas.className = "aramon-medium__fluid";
     this.canvas.setAttribute("aria-hidden", "true");
     const context = this.canvas.getContext("2d", { alpha: true });
-    if (!context) throw new Error("Aramon Medium requires a 2D canvas context.");
+    if (!context) {
+      this.canvas.remove();
+      throw new Error("Aramon Medium requires a 2D canvas context.");
+    }
     this.context = context;
     this.element.append(this.canvas);
 
-    this.resizeObserver = new ResizeObserver(() => this.resize());
-    this.intersectionObserver = new IntersectionObserver(([entry]) => {
-      this.visible = entry?.isIntersecting ?? false;
-      if (!this.visible) this.reset();
-    }, { rootMargin: "120px" });
+    if (typeof ResizeObserver !== "undefined") {
+      this.resizeObserver = new ResizeObserver(() => this.resize());
+      this.resizeObserver.observe(element);
+    } else {
+      window.addEventListener("resize", this.onWindowResize, { passive: true });
+    }
 
-    this.resizeObserver.observe(element);
-    this.intersectionObserver.observe(element);
-    this.element.addEventListener("pointerdown", this.onPointerDown, { passive: true });
-    if (this.interaction === "stir") this.element.addEventListener("pointermove", this.onPointerMove, { passive: true });
+    if (typeof IntersectionObserver !== "undefined") {
+      this.intersectionObserver = new IntersectionObserver(([entry]) => {
+        const wasVisible = this.visible;
+        this.visible = entry?.isIntersecting ?? false;
+        if (!this.visible) this.reset();
+        if (this.visible && !wasVisible && this.tier !== "flat" && this.interaction !== "off") {
+          requestAnimationFrame(() => this.seed());
+        }
+      }, { rootMargin: "120px" });
+      this.intersectionObserver.observe(element);
+    }
+
+    this.element.addEventListener("mousedown", this.onPointerDown, { passive: true });
+    this.element.addEventListener("touchstart", this.onTouchStart, { passive: true });
+    if (this.interaction === "stir") this.element.addEventListener("mousemove", this.onPointerMove, { passive: true });
     director.add(this, options.maxActive);
     this.resize();
+    this.element.dataset.mediumEngine = this.tier === "flat" ? "static" : "canvas";
+    if (this.tier !== "flat" && this.interaction !== "off") {
+      requestAnimationFrame(() => this.seed());
+    }
   }
 
   get shouldAnimate() {
@@ -143,6 +163,7 @@ class MediumPool implements MediumController {
   wake() {
     if (this.tier === "flat" || this.interaction === "off") return;
     this.awake = true;
+    this.element.dataset.mediumActive = "true";
     this.priority = performance.now();
     director.requestFrame();
   }
@@ -184,6 +205,7 @@ class MediumPool implements MediumController {
     const averageEnergy = energy / (this.cols * this.rows);
     if (averageEnergy < QUIET) {
       this.awake = false;
+      delete this.element.dataset.mediumActive;
       return false;
     }
     return true;
@@ -192,19 +214,39 @@ class MediumPool implements MediumController {
   destroy() {
     if (this.destroyed) return;
     this.destroyed = true;
-    this.resizeObserver.disconnect();
-    this.intersectionObserver.disconnect();
-    this.element.removeEventListener("pointerdown", this.onPointerDown);
-    this.element.removeEventListener("pointermove", this.onPointerMove);
+    this.resizeObserver?.disconnect();
+    this.intersectionObserver?.disconnect();
+    window.removeEventListener("resize", this.onWindowResize);
+    this.element.removeEventListener("mousedown", this.onPointerDown);
+    this.element.removeEventListener("mousemove", this.onPointerMove);
+    this.element.removeEventListener("touchstart", this.onTouchStart);
     this.canvas.remove();
+    delete this.element.dataset.mediumEngine;
+    delete this.element.dataset.mediumActive;
     director.remove(this);
+  }
+
+  private onWindowResize = () => this.resize();
+
+  private seed() {
+    if (this.destroyed || !this.visible || this.cols < 4 || this.rows < 4) return;
+    const rect = this.element.getBoundingClientRect();
+    this.disturb(
+      rect.left + rect.width * 0.36,
+      rect.top + rect.height * 0.4,
+      this.tier === "reduced" ? 0.42 : 0.68,
+      3.6,
+    );
   }
 
   private resize() {
     const { width, height } = this.element.getBoundingClientRect();
     this.rect = null;
-    this.cols = Math.max(4, Math.ceil(width / CELL));
-    this.rows = Math.max(4, Math.ceil(height / CELL));
+    const nextCols = Math.max(4, Math.ceil(width / CELL));
+    const nextRows = Math.max(4, Math.ceil(height / CELL));
+    if (nextCols === this.cols && nextRows === this.rows && this.image) return;
+    this.cols = nextCols;
+    this.rows = nextRows;
     this.heights = new Float32Array(this.cols * this.rows);
     this.velocities = new Float32Array(this.cols * this.rows);
     this.scratch = new Float32Array(this.cols * this.rows);
@@ -217,6 +259,7 @@ class MediumPool implements MediumController {
 
   private reset() {
     this.awake = false;
+    delete this.element.dataset.mediumActive;
     this.heights.fill(0);
     this.velocities.fill(0);
     this.scratch.fill(0);
@@ -242,20 +285,28 @@ class MediumPool implements MediumController {
     this.wake();
   }
 
-  private onPointerDown = (event: PointerEvent) => {
+  private onPointerDown = (event: MouseEvent) => {
     if (this.interaction === "off") return;
     this.lastX = event.clientX;
     this.lastY = event.clientY;
     this.disturb(event.clientX, event.clientY, this.tier === "reduced" ? 0.72 : 1.05, 3.2);
   };
 
-  private onPointerMove = (event: PointerEvent) => {
-    if (event.pointerType === "touch") return;
+  private onPointerMove = (event: MouseEvent) => {
     const distance = Math.hypot(event.clientX - this.lastX, event.clientY - this.lastY);
     this.lastX = event.clientX;
     this.lastY = event.clientY;
     if (distance < 2) return;
     this.disturb(event.clientX, event.clientY, Math.min(0.56, distance * 0.028), 2.5);
+  };
+
+  private onTouchStart = (event: TouchEvent) => {
+    if (this.interaction === "off") return;
+    const touch = event.touches[0];
+    if (!touch) return;
+    this.lastX = touch.clientX;
+    this.lastY = touch.clientY;
+    this.disturb(touch.clientX, touch.clientY, this.tier === "reduced" ? 0.72 : 1.05, 3.2);
   };
 
   private render() {

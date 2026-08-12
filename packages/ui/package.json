@@ -5,6 +5,9 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./alert": "./src/alert.tsx",
+    "./avatar": "./src/avatar.tsx",
+    "./badge": "./src/badge.tsx",
     "./button": "./src/button.tsx",
     "./checkbox": "./src/checkbox.tsx",
     "./dialog": "./src/dialog.tsx",
@@ -12,7 +15,11 @@
     "./frame": "./src/frame.tsx",
     "./input": "./src/input.tsx",
     "./progress-trace": "./src/progress-trace.tsx",
-    "./tabs": "./src/tabs.tsx"
+    "./radio-card": "./src/radio-card.tsx",
+    "./select": "./src/select.tsx",
+    "./switch": "./src/switch.tsx",
+    "./tabs": "./src/tabs.tsx",
+    "./tooltip": "./src/tooltip.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"

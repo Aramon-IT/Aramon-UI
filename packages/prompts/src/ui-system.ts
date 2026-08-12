@@ -17,7 +17,7 @@ NON-NEGOTIABLE RULES
 - Medium stays neutral black in light mode. Mood colors may appear only in atmosphere, glint, or fluid energy.
 - The vessel remains still. Only the internal liquid field responds.
 - Text and controls render above the fluid canvas and never distort.
-- Motion begins with user intent and returns to calm.
+- Canvas physics begins with user intent and returns to calm. A subtle transform-only optical drift may establish living Medium, but must stop for reduced motion.
 - Provide reduced-motion, flat-material, keyboard, touch, and low-performance fallbacks.
 - Do not apply glass, gradients, glow, pills, or shadows decoratively.
 
@@ -28,7 +28,7 @@ Dark Ink: #EEEAE4. Light Ink: #18272D.
 Dark secondary Ink: rgba(238,234,228,.64). Light secondary Ink: rgba(24,39,45,.68).
 Dark hairline: rgba(238,234,228,.14). Light hairline: rgba(27,56,66,.14).
 Light-mode Medium top: rgb(24,26,27). Light-mode Medium bottom: rgb(3,4,5).
-Dark Lamp: #FFF5E8 to #E8D3B8. Light Lamp: #FFFFFF to #D2EBF0.
+Dark Lamp: #FFF5E8 to #E8D3B8. Light Lamp: #202629 to #080A0B.
 Display: Iowan Old Style or Baskerville. UI: Avenir Next or Segoe UI. Labels: SF Mono or equivalent.
 Control radius: 6px. Frame radius: 2px 2px 12px 12px. Medium radius: 18px 18px 7px 7px.
 Material easing: cubic-bezier(.22,1,.36,1).
@@ -40,6 +40,7 @@ IMPLEMENTATION CONTRACT
 - Use accessible HTML before styling.
 - Keep component APIs small, composable, and explicit about material role.
 - Include responsive behavior and visible keyboard focus.
+- Prefer the established primitives before creating new ones: Button, Badge, Avatar, Input, Textarea, Select, Checkbox, Switch, RadioCard, Tabs, Alert, Tooltip, ProgressTrace, Frame, FocusVessel, and Dialog.
 - Explain the attention hierarchy and role assignment before presenting code.
 `.trim();
 

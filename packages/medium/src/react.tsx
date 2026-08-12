@@ -10,8 +10,13 @@ export function useMediumPhysics(interaction: MediumInteraction = "stir") {
   useEffect(() => {
     const element = ref.current;
     if (!element || interaction === "off") return;
-    const controller = attachMedium(element, { interaction });
-    return () => controller.destroy();
+    try {
+      const controller = attachMedium(element, { interaction });
+      return () => controller.destroy();
+    } catch {
+      element.dataset.mediumEngine = "css";
+      return () => { delete element.dataset.mediumEngine; };
+    }
   }, [interaction]);
 
   return ref;

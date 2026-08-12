@@ -42,7 +42,7 @@ export function DialogTrigger(props: ButtonProps) {
 
 export function DialogClose(props: ButtonProps) {
   const { setOpen } = useDialogContext();
-  return <Button {...props} onClick={(event) => { props.onClick?.(event); if (!event.defaultPrevented) setOpen(false); }} />;
+  return <Button {...props} className={cn(props.energy === "quiet" && "aramon-dialog-close-quiet", props.className)} onClick={(event) => { props.onClick?.(event); if (!event.defaultPrevented) setOpen(false); }} />;
 }
 
 export interface DialogContentProps extends Omit<DialogHTMLAttributes<HTMLDialogElement>, "open"> {
@@ -76,9 +76,9 @@ export function DialogContent({ children, className, ...props }: DialogContentPr
 }
 
 export function DialogTitle({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
-  return <h2 className={cn("m-0 font-serif text-3xl font-normal tracking-[-.04em] text-white", className)} {...props} />;
+  return <h2 className={cn("aramon-dialog-title m-0 font-serif text-3xl font-normal tracking-[-.04em]", className)} {...props} />;
 }
 
 export function DialogDescription({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
-  return <p className={cn("m-0 text-sm leading-[1.65] text-white/82", className)} {...props} />;
+  return <p className={cn("aramon-dialog-description m-0 text-sm leading-[1.65]", className)} {...props} />;
 }
