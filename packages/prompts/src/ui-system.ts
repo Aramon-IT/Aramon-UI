@@ -14,6 +14,8 @@ NON-NEGOTIABLE RULES
 - Use one dominant Lamp per viewport.
 - Use Frame for repeated content. Do not turn every item into a floating card.
 - Every Medium surface must have a functional reason.
+- Live Medium is limited to one persistent signature vessel plus one temporary overlay. Supporting glass remains static.
+- Hidden overlays, repeated content, rails, and ordinary panels must not mount a liquid physics engine.
 - Medium stays neutral black in light mode. Mood colors may appear only in atmosphere, glint, or fluid energy.
 - The vessel remains still. Only the internal liquid field responds.
 - Text and controls render above the fluid canvas and never distort.
@@ -40,7 +42,7 @@ IMPLEMENTATION CONTRACT
 - Use accessible HTML before styling.
 - Keep component APIs small, composable, and explicit about material role.
 - Include responsive behavior and visible keyboard focus.
-- Prefer the established primitives before creating new ones: Button, Badge, Avatar, Input, Textarea, Select, Checkbox, Switch, RadioCard, Tabs, Alert, Tooltip, ProgressTrace, Frame, FocusVessel, and Dialog.
+- Prefer the established primitives before creating new ones: Button, Badge, Avatar, Input, Textarea, Select, Checkbox, Switch, RadioCard, Tabs, Alert, Tooltip, ProgressTrace, Frame, Separator, Kbd, Skeleton, Breadcrumb, Table, EmptyState, FocusVessel, and Dialog.
 - Explain the attention hierarchy and role assignment before presenting code.
 `.trim();
 
@@ -82,7 +84,7 @@ First produce an attention map:
 
 Assign Desk, Frame, Medium, and Lamp roles before choosing components.
 
-Build the application architecture first. Then add one dominant Lamp and only the Medium surfaces that are functionally earned. Avoid marketing-page composition, generic dashboard card grids, decorative glass, and repeated liquid animation.
+Build the application architecture first. Then add one dominant Lamp and at most one persistent live Medium vessel. One transient live Medium overlay may mount while open. Supporting glass remains static. Avoid marketing-page composition, generic dashboard card grids, decorative glass, and repeated liquid animation.
 
 Use React 19, Next.js App Router, TypeScript, Tailwind CSS 4, @aramon/ui, and @aramon/medium. Keep data and static composition on the server. Isolate interactive client components at the narrowest boundary.
 

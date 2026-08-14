@@ -4,16 +4,22 @@ import Link from "next/link";
 import { Alert } from "@aramon/ui/alert";
 import { Avatar } from "@aramon/ui/avatar";
 import { Badge } from "@aramon/ui/badge";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@aramon/ui/breadcrumb";
 import { Button } from "@aramon/ui/button";
 import { Checkbox } from "@aramon/ui/checkbox";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "@aramon/ui/dialog";
+import { EmptyState } from "@aramon/ui/empty-state";
 import { FocusVessel } from "@aramon/ui/focus-vessel";
 import { Frame } from "@aramon/ui/frame";
 import { FieldError, FieldHint, FieldLabel, Input, Textarea } from "@aramon/ui/input";
+import { Kbd, KeySequence } from "@aramon/ui/kbd";
 import { ProgressTrace } from "@aramon/ui/progress-trace";
 import { RadioCard } from "@aramon/ui/radio-card";
 import { Select } from "@aramon/ui/select";
+import { Separator } from "@aramon/ui/separator";
+import { Skeleton, SkeletonText } from "@aramon/ui/skeleton";
 import { Switch } from "@aramon/ui/switch";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@aramon/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@aramon/ui/tabs";
 import { Tooltip } from "@aramon/ui/tooltip";
 import { Brand } from "../_components/brand";
@@ -64,7 +70,7 @@ export default function ComponentsPage() {
         <aside className="catalog-index">
           <span>COMPONENT INDEX</span>
           <nav aria-label="Component index">
-            <a href="#button">Button</a><a href="#badge">Badge</a><a href="#avatar">Avatar</a><a href="#fields">Fields</a><a href="#choice">Choice</a><a href="#radio">Radio Card</a><a href="#tabs">Tabs</a><a href="#alert">Alert</a><a href="#tooltip">Tooltip</a><a href="#progress">Progress</a><a href="#focus-vessel">Focus Vessel</a><a href="#dialog">Dialog</a>
+            <a href="#button">Button</a><a href="#badge">Badge</a><a href="#avatar">Avatar</a><a href="#fields">Fields</a><a href="#choice">Choice</a><a href="#radio">Radio Card</a><a href="#tabs">Tabs</a><a href="#alert">Alert</a><a href="#tooltip">Tooltip</a><a href="#progress">Progress</a><a href="#separator">Separator</a><a href="#kbd">Keyboard Key</a><a href="#skeleton">Skeleton</a><a href="#breadcrumb">Breadcrumb</a><a href="#table">Table</a><a href="#empty-state">Empty State</a><a href="#focus-vessel">Focus Vessel</a><a href="#dialog">Dialog</a>
           </nav>
         </aside>
 
@@ -72,7 +78,7 @@ export default function ComponentsPage() {
           <header className="catalog-hero">
             <p>ARAMON UI / COMPONENT LIBRARY</p>
             <h1>Components,<br />in the open.</h1>
-            <p>Twelve reusable families, visible in both fields. Inspect variants, states, semantics, accessibility, and approved Medium behavior without hidden theme switches.</p>
+            <p>Eighteen reusable families, visible in both fields. Inspect variants, states, semantics, accessibility, and the strict one-persistent-plus-one-transient Medium budget.</p>
           </header>
 
           <section id="button" className="catalog-section">
@@ -145,17 +151,47 @@ export default function ComponentsPage() {
             <ThemePair source="@aramon/ui/progress-trace" className="progress-specimen">{() => <div className="progress-stack"><ProgressTrace value={18} label="Beginning" /><ProgressTrace value={68} label="Weekly rhythm" /><ProgressTrace value={100} label="Complete" /></div>}</ThemePair>
           </section>
 
+          <section id="separator" className="catalog-section">
+            <SectionHeader eyebrow="11 / STRUCTURE" title="Separator" description="A hairline creates rhythm and hierarchy before a Frame becomes another box." />
+            <ThemePair source="@aramon/ui/separator">{() => <div className="separator-specimen"><div><strong>Focus settings</strong><span>Workspace behavior</span></div><Separator /><div className="separator-inline"><span>Today</span><Separator orientation="vertical" /><span>14 August</span><Separator orientation="vertical" /><span>4 sessions</span></div><Separator decorative={false} /><p>Semantic separators are announced only when the division carries meaning.</p></div>}</ThemePair>
+          </section>
+
+          <section id="kbd" className="catalog-section">
+            <SectionHeader eyebrow="12 / COMMAND" title="Keyboard Key" description="Keyboard notation stays compact, legible, and subordinate to the action it explains." />
+            <ThemePair source="@aramon/ui/kbd">{() => <div className="shortcut-list"><div><span>Open command field</span><KeySequence keys={["⌘", "K"]} /></div><div><span>Begin focus</span><Kbd>F</Kbd></div><div><span>Move between views</span><KeySequence keys={["←", "→"]} /></div></div>}</ThemePair>
+          </section>
+
+          <section id="skeleton" className="catalog-section">
+            <SectionHeader eyebrow="13 / LOADING" title="Skeleton" description="Loading preserves composition without introducing another glowing focal point; motion stops when reduced motion is requested." />
+            <ThemePair source="@aramon/ui/skeleton">{() => <div className="skeleton-specimen"><div className="skeleton-profile"><Skeleton className="size-11 rounded-full" /><div><Skeleton className="h-3 w-28" /><Skeleton className="mt-2 h-2 w-20" /></div></div><Skeleton className="mt-8 h-28 w-full rounded-[2px_2px_12px_12px]" /><SkeletonText className="mt-6" lines={4} /></div>}</ThemePair>
+          </section>
+
+          <section id="breadcrumb" className="catalog-section">
+            <SectionHeader eyebrow="14 / LOCATION" title="Breadcrumb" description="Location is expressed through native links and plain hierarchy, not another navigation card." />
+            <ThemePair source="@aramon/ui/breadcrumb">{() => <div className="breadcrumb-specimen"><Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href="#">Aramon</BreadcrumbLink><BreadcrumbSeparator /></BreadcrumbItem><BreadcrumbItem><BreadcrumbLink href="#">Focus</BreadcrumbLink><BreadcrumbSeparator /></BreadcrumbItem><BreadcrumbItem><BreadcrumbPage>Memory models</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb><p>The current page is stable language; previous levels remain navigable.</p></div>}</ThemePair>
+          </section>
+
+          <section id="table" className="catalog-section">
+            <SectionHeader eyebrow="15 / DENSITY" title="Table" description="Dense information remains architectural, aligned, and readable without turning every row into a card." />
+            <ThemePair source="@aramon/ui/table" className="table-specimen">{() => <Table><TableCaption>Three recent focus sessions.</TableCaption><TableHeader><TableRow><TableHead>Session</TableHead><TableHead>Rhythm</TableHead><TableHead>Status</TableHead></TableRow></TableHeader><TableBody><TableRow><TableCell className="font-medium text-aramon-ink">Memory models</TableCell><TableCell>50 min</TableCell><TableCell><Badge tone="positive" dot>Complete</Badge></TableCell></TableRow><TableRow><TableCell className="font-medium text-aramon-ink">Recall notes</TableCell><TableCell>25 min</TableCell><TableCell><Badge>Draft</Badge></TableCell></TableRow><TableRow><TableCell className="font-medium text-aramon-ink">Final explanation</TableCell><TableCell>50 min</TableCell><TableCell><Badge tone="attention" dot>Review</Badge></TableCell></TableRow></TableBody></Table>}</ThemePair>
+          </section>
+
+          <section id="empty-state" className="catalog-section">
+            <SectionHeader eyebrow="16 / ABSENCE" title="Empty State" description="A purposeful empty state explains the absence and offers one meaningful Lamp rather than filling space decoratively." />
+            <ThemePair source="@aramon/ui/empty-state" className="empty-specimen">{() => <EmptyState title="No sessions here yet" description="Create one deliberate block. Aramon will keep the rest of the field quiet." icon="+" action={<Button energy="lamp">Create session</Button>} />}</ThemePair>
+          </section>
+
           <section id="focus-vessel" className="catalog-section">
-            <SectionHeader eyebrow="11 / MEDIUM · STIR" title="Focus Vessel" description="A subtle autonomous drift now establishes living material everywhere; pointer or touch adds richer canvas physics when supported." />
-            <ThemePair source="@aramon/ui/focus-vessel" className="medium-specimen">{(theme) => <FocusVessel eyebrow={`${theme.toUpperCase()} / MEDIUM`} metric={theme === "light" ? "50:00" : "25:00"} title={theme === "light" ? "Memory models" : "Review notes"} action={<Button energy="lamp">Begin session</Button>}>Move or press inside the vessel to disturb its light. The content remains stable.</FocusVessel>}</ThemePair>
+            <SectionHeader eyebrow="17 / MEDIUM · STIR" title="Focus Vessel" description="One persistent signature vessel may own live physics. The paired dark specimen is deliberately static so this catalog respects the same production budget." />
+            <ThemePair source="@aramon/ui/focus-vessel" className="medium-specimen">{(theme) => <FocusVessel interaction={theme === "light" ? "stir" : "off"} eyebrow={`${theme.toUpperCase()} / ${theme === "light" ? "LIVE MEDIUM" : "STATIC REFERENCE"}`} metric={theme === "light" ? "50:00" : "25:00"} title={theme === "light" ? "Memory models" : "Review notes"} action={<Button energy="lamp">Begin session</Button>}>Move or press inside the live vessel to disturb its light. Content remains stable.</FocusVessel>}</ThemePair>
           </section>
 
           <section id="dialog" className="catalog-section">
-            <SectionHeader eyebrow="12 / MEDIUM · PRESS" title="Dialog" description="A translucent, blurred decision layer with stable readable type and a contained liquid impulse on press." />
+            <SectionHeader eyebrow="18 / MEDIUM · PRESS" title="Dialog" description="A transient decision layer mounts the second Medium engine only while open, then releases it completely." />
             <ThemePair source="@aramon/ui/dialog" className="dialog-specimen">{(theme) => <div className="dialog-demo"><div><strong>{theme === "light" ? "Light decision" : "Dark decision"}</strong><p>The background remains visible through neutral blurred Medium.</p></div><Dialog><DialogTrigger energy="lamp">Open dialog</DialogTrigger><DialogContent><div><DialogTitle>Begin a focus session?</DialogTitle><DialogDescription className="mt-2">The Medium reacts to the decision surface, while the text remains stable, crisp, and accessible above the liquid layer.</DialogDescription></div><div className="flex justify-end gap-2"><DialogClose energy="quiet">Not now</DialogClose><DialogClose energy="lamp">Begin</DialogClose></div></DialogContent></Dialog></div>}</ThemePair>
           </section>
 
-          <footer className="docs-footer"><span>Aramon UI / 12 families</span><Link href="/prompts">Continue to prompts →</Link></footer>
+          <footer className="docs-footer"><span>Aramon UI / 18 families</span><Link href="/prompts">Continue to prompts →</Link></footer>
         </div>
       </div>
     </main>

@@ -23,6 +23,9 @@ VERIFIED PHYSICS VALUES
 - Highlight gain after blur: 1.5.
 
 DIRECTOR AND PERFORMANCE
+- Treat live Medium as scarce: allow one persistent signature vessel and one transient overlay at most.
+- Supporting glass stays static. Repeated cards, rows, fields, rails, and hidden overlays must not mount a physics engine.
+- Unmount a transient engine as soon as its overlay closes.
 - Use one director loop for every Medium surface.
 - Animate only a small fixed number of the most recently touched pools.
 - Use Map or WeakMap for element-to-pool lookup.
@@ -76,6 +79,8 @@ Reject the implementation if:
 - text enters the distorted layer;
 - physics start before hydration;
 - each surface owns an independent permanent animation loop;
+- more than one persistent surface or more than one transient overlay owns live physics;
+- supporting glass, repeated content, or a closed overlay mounts a physics engine;
 - offscreen or detached surfaces continue consuming work;
 - pointer coordinates are not local to the vessel;
 - energy crosses between components;

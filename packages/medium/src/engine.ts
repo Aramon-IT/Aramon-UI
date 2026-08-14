@@ -1,4 +1,4 @@
-import type { MediumInteraction, MediumPhysicsOptions } from "./core";
+import { MEDIUM_PERFORMANCE_BUDGET, type MediumInteraction, type MediumPhysicsOptions } from "./core";
 
 type PhysicsTier = "full" | "reduced" | "flat";
 
@@ -36,11 +36,13 @@ function readRgb(element: HTMLElement): [number, number, number] {
 class PhysicsDirector {
   private pools = new Set<MediumPool>();
   private frame = 0;
-  private maxActive = 2;
+  private maxActive: number = MEDIUM_PERFORMANCE_BUDGET.maxActive;
 
   add(pool: MediumPool, requestedMax?: number) {
     this.pools.add(pool);
-    if (requestedMax) this.maxActive = Math.max(1, Math.min(4, requestedMax));
+    if (requestedMax) {
+      this.maxActive = Math.max(1, Math.min(MEDIUM_PERFORMANCE_BUDGET.maxActive, requestedMax));
+    }
     if (this.pools.size === 1) {
       document.addEventListener("visibilitychange", this.onVisibilityChange);
       window.addEventListener("scroll", this.onScroll, { passive: true });

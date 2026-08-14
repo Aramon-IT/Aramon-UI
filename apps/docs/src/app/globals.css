@@ -103,7 +103,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .catalog-page { background: radial-gradient(circle at 78% 0%, rgba(88, 166, 187, .18), transparent 30rem), var(--aramon-desk); }
 .catalog-layout { width: min(1440px, 100%); margin: 0 auto; display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: clamp(30px, 5vw, 74px); padding: 0 clamp(22px, 4vw, 60px); }
-.catalog-index { position: sticky; top: 104px; height: max-content; padding-top: 48px; }
+.catalog-index { position: sticky; top: 104px; max-height: calc(100vh - 120px); overflow-y: auto; padding: 48px 8px 24px 0; scrollbar-width: thin; }
 .catalog-index > span { color: var(--aramon-ink-3); font: 8px var(--aramon-mono); letter-spacing: .12em; }
 .catalog-index nav { display: grid; margin-top: 22px; border-top: 1px solid var(--aramon-hairline); }
 .catalog-index a { min-height: 39px; display: flex; align-items: center; color: var(--aramon-ink-3); border-bottom: 1px solid var(--aramon-hairline); font-size: 11px; text-decoration: none; }
@@ -136,6 +136,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .alert-specimen { min-height: 500px; }
 .alert-stack { display: grid; gap: 10px; }
 .progress-specimen { min-height: 310px; }
+.separator-specimen { min-height: 180px; display: grid; align-content: center; gap: 18px; }
+.separator-specimen > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+.separator-specimen strong { font: 400 22px var(--aramon-display); }
+.separator-specimen span, .separator-specimen p { color: var(--aramon-ink-3); font-size: 10px; }
+.separator-specimen p { margin: 0; line-height: 1.6; }
+.separator-inline { min-height: 24px; display: flex; align-items: center; gap: 12px; }
+.shortcut-list { min-height: 180px; display: grid; align-content: center; }
+.shortcut-list > div { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--aramon-hairline); color: var(--aramon-ink-2); font-size: 11px; }
+.shortcut-list > div:first-child { border-top: 1px solid var(--aramon-hairline); }
+.skeleton-specimen { min-height: 300px; }
+.skeleton-profile { display: flex; align-items: center; gap: 12px; }
+.breadcrumb-specimen { min-height: 180px; display: grid; align-content: center; gap: 28px; }
+.breadcrumb-specimen p { margin: 0; max-width: 44ch; color: var(--aramon-ink-3); font-size: 10px; line-height: 1.65; }
+.table-specimen { min-height: 360px; overflow: hidden; padding-inline: 14px; }
+.empty-specimen { padding: 12px; }
 .medium-specimen { position: relative; overflow: hidden; padding: 16px; background-position: center; background-size: cover; }
 .medium-specimen[data-aramon-theme="light"] { background-image: linear-gradient(rgba(235, 242, 241, .06), rgba(235, 242, 241, .06)), url("/aramon-light-field.webp"); }
 .medium-specimen[data-aramon-theme="dark"] { background-image: linear-gradient(rgba(5, 5, 6, .08), rgba(5, 5, 6, .08)), url("/aramon-dark-field.webp"); }

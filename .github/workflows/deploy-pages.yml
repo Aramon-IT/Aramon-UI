@@ -34,7 +34,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build static documentation
-        run: pnpm --filter @aramon/docs build
+        run: pnpm build
 
       - name: Disable Jekyll processing
         run: touch apps/docs/out/.nojekyll

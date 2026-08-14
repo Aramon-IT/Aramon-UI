@@ -9,7 +9,7 @@ Build a focused desktop environment using the Aramon material roles:
 
 Use React 19, Next.js App Router, TypeScript, and Tailwind CSS 4. Prefer Server Components and isolate client behavior. Use semantic Aramon tokens, accessible HTML, responsive layout, visible focus, and reduced-motion fallbacks.
 
-Prefer the established primitives before inventing new patterns: Button, Badge, Avatar, Input, Textarea, Select, Checkbox, Switch, RadioCard, Tabs, Alert, Tooltip, ProgressTrace, Frame, FocusVessel, and Dialog. Canvas physics begins with intent and returns to calm; the subtle CSS optical drift exists only as a cross-browser Medium fallback and stops for reduced motion.
+Prefer the established primitives before inventing new patterns: Button, Badge, Avatar, Input, Textarea, Select, Checkbox, Switch, RadioCard, Tabs, Alert, Tooltip, ProgressTrace, Frame, Separator, Kbd, Skeleton, Breadcrumb, Table, EmptyState, FocusVessel, and Dialog. Canvas physics begins with intent and returns to calm; the subtle CSS optical drift exists only as a cross-browser Medium fallback and stops for reduced motion. Allow only one persistent live Medium vessel plus one transient overlay; supporting glass, rails, repeated content, and hidden overlays remain static.
 
 Do not create a generic dashboard, floating card grid, decorative glass, repeated liquid animation, multiple glowing actions, or opaque mood-colored Medium surfaces in light mode.
 

@@ -1,0 +1,219 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "aramon-ui",
+  "homepage": "https://ui.aramon.ma",
+  "items": [
+    {
+      "name": "aramon-base",
+      "type": "registry:style",
+      "title": "Aramon Base",
+      "description": "Desk, Frame, Medium, Lamp, typography, color, and motion tokens.",
+      "files": [{ "path": "packages/tokens/src/theme.css", "type": "registry:style", "target": "~/styles/aramon.css" }]
+    },
+    {
+      "name": "cn",
+      "type": "registry:lib",
+      "title": "Class Name Utility",
+      "description": "Minimal Aramon class composition utility.",
+      "files": [{ "path": "packages/ui/src/lib/cn.ts", "type": "registry:lib", "target": "~/components/aramon/lib/cn.ts" }]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Lamp, reflective, quiet, and critical action energies.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/button.tsx", "type": "registry:ui", "target": "~/components/aramon/button.tsx" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Compact semantic status language.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/badge.tsx", "type": "registry:ui", "target": "~/components/aramon/badge.tsx" }]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Identity, initials, imagery, and presence.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/avatar.tsx", "type": "registry:ui", "target": "~/components/aramon/avatar.tsx" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text input, textarea, label, hint, and error primitives.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/input.tsx", "type": "registry:ui", "target": "~/components/aramon/input.tsx" }]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Native selection behavior with an Aramon Frame surface.",
+      "registryDependencies": ["input", "cn"],
+      "files": [{ "path": "packages/ui/src/select.tsx", "type": "registry:ui", "target": "~/components/aramon/select.tsx" }]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Native multi-selection with persistent supporting copy.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/checkbox.tsx", "type": "registry:ui", "target": "~/components/aramon/checkbox.tsx" }]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Immediate setting control with native keyboard behavior.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/switch.tsx", "type": "registry:ui", "target": "~/components/aramon/switch.tsx" }]
+    },
+    {
+      "name": "radio-card",
+      "type": "registry:ui",
+      "title": "Radio Card",
+      "description": "Explained mutually exclusive choices in Frame material.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/radio-card.tsx", "type": "registry:ui", "target": "~/components/aramon/radio-card.tsx" }]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Keyboard-navigable related views.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/tabs.tsx", "type": "registry:ui", "target": "~/components/aramon/tabs.tsx" }]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Inline semantic feedback and critical announcements.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/alert.tsx", "type": "registry:ui", "target": "~/components/aramon/alert.tsx" }]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Hover and focus clarification for unfamiliar controls.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/tooltip.tsx", "type": "registry:ui", "target": "~/components/aramon/tooltip.tsx" }]
+    },
+    {
+      "name": "progress-trace",
+      "type": "registry:ui",
+      "title": "Progress Trace",
+      "description": "Quiet architectural progress signal.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/progress-trace.tsx", "type": "registry:ui", "target": "~/components/aramon/progress-trace.tsx" }]
+    },
+    {
+      "name": "frame",
+      "type": "registry:ui",
+      "title": "Frame",
+      "description": "Stable architectural surface for repeated information.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/frame.tsx", "type": "registry:ui", "target": "~/components/aramon/frame.tsx" }]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Quiet structural division without card inflation.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/separator.tsx", "type": "registry:ui", "target": "~/components/aramon/separator.tsx" }]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Keyboard Key",
+      "description": "Compact keyboard command notation.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/kbd.tsx", "type": "registry:ui", "target": "~/components/aramon/kbd.tsx" }]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Reduced-motion-safe loading placeholders.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/skeleton.tsx", "type": "registry:ui", "target": "~/components/aramon/skeleton.tsx" }]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Application location hierarchy with native navigation.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/breadcrumb.tsx", "type": "registry:ui", "target": "~/components/aramon/breadcrumb.tsx" }]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty State",
+      "description": "Purposeful absence with one clear next action.",
+      "registryDependencies": ["aramon-base", "cn", "button"],
+      "files": [{ "path": "packages/ui/src/empty-state.tsx", "type": "registry:ui", "target": "~/components/aramon/empty-state.tsx" }]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Dense readable information architecture without floating cards.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/table.tsx", "type": "registry:ui", "target": "~/components/aramon/table.tsx" }]
+    },
+    {
+      "name": "medium-surface",
+      "type": "registry:ui",
+      "title": "Medium Surface",
+      "description": "Framework-independent liquid physics with a narrow React adapter.",
+      "registryDependencies": ["aramon-base"],
+      "files": [
+        { "path": "packages/medium/src/core.ts", "type": "registry:lib", "target": "~/components/aramon/medium/core.ts" },
+        { "path": "packages/medium/src/engine.ts", "type": "registry:lib", "target": "~/components/aramon/medium/engine.ts" },
+        { "path": "packages/medium/src/react.tsx", "type": "registry:ui", "target": "~/components/aramon/medium/react.tsx" }
+      ]
+    },
+    {
+      "name": "focus-vessel",
+      "type": "registry:ui",
+      "title": "Focus Vessel",
+      "description": "The one persistent signature Medium surface.",
+      "registryDependencies": ["medium-surface", "cn"],
+      "files": [{ "path": "packages/ui/src/focus-vessel.tsx", "type": "registry:ui", "target": "~/components/aramon/focus-vessel.tsx" }]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Transient top-layer decision surface using the second Medium budget.",
+      "registryDependencies": ["medium-surface", "button", "cn"],
+      "files": [{ "path": "packages/ui/src/dialog.tsx", "type": "registry:ui", "target": "~/components/aramon/dialog.tsx" }]
+    },
+    {
+      "name": "agent-prompts",
+      "type": "registry:item",
+      "title": "Aramon Agent Prompts",
+      "description": "System, Medium animation, and review contracts for AI coding agents.",
+      "files": [
+        { "path": "packages/prompts/src/markdown/ui-system.md", "type": "registry:file", "target": "~/docs/aramon/ui-system.md" },
+        { "path": "packages/prompts/src/markdown/medium-animation.md", "type": "registry:file", "target": "~/docs/aramon/medium-animation.md" },
+        { "path": "docs/Aramon-Medium-Physics.md", "type": "registry:file", "target": "~/docs/aramon/Aramon-Medium-Physics.md" }
+      ]
+    },
+    {
+      "name": "aramon-ui",
+      "type": "registry:item",
+      "title": "Aramon UI System",
+      "description": "Install the complete current Aramon UI foundation and component catalog.",
+      "registryDependencies": ["button", "badge", "avatar", "input", "select", "checkbox", "switch", "radio-card", "tabs", "alert", "tooltip", "progress-trace", "frame", "separator", "kbd", "skeleton", "breadcrumb", "empty-state", "table", "focus-vessel", "dialog", "agent-prompts"]
+    }
+  ]
+}

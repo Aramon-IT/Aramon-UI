@@ -23,6 +23,8 @@ MOTION
 - Does the vessel stay still?
 - Is text protected from distortion?
 - Are active simulation costs bounded?
+- Is live Medium limited to one persistent signature vessel plus one transient overlay?
+- Do supporting glass, repeated content, rails, and closed overlays avoid mounting physics?
 
 ACCESSIBILITY
 - Check semantic HTML, contrast, keyboard focus, touch targets, reduced motion, reflow, and non-color state communication.

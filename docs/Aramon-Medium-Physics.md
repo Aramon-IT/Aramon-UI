@@ -23,6 +23,16 @@ The system is not a collection of fashionable effects. It is a model for assigni
 
 > One Lamp. One living Medium surface. No liquid in repeated rows. No depth without function.
 
+### Live Medium performance budget
+
+Glass and live Medium are different resources. Static translucent glass MAY be used for a small number of architectural surfaces; liquid physics MUST remain scarce.
+
+- An application MUST mount no more than **one persistent live Medium vessel** in a viewport.
+- One additional **transient live Medium vessel** MAY mount for a dialog, popover, or temporary command surface.
+- Hidden or closed overlays MUST NOT retain a canvas, observer, listener, or animation ownership.
+- Navigation rails, repeated cards, rows, fields, and background Frames MUST use static material.
+- If a scene would exceed this budget, the additional vessel MUST render the same glass recipe without live physics.
+
 ## 1. Design intent
 
 Aramon applications should make users feel:
@@ -121,7 +131,7 @@ Rules:
 - Medium MUST NOT use large opaque mood-colored fills in light mode.
 - Text MUST render above the fluid field and MUST remain undistorted.
 - The component is the vessel and MUST NOT wobble, stretch, or follow the pointer.
-- Repeated Medium surfaces MUST stay inert until touched.
+- Repeated or supporting glass surfaces MUST remain static and MUST NOT mount a Medium engine.
 - Only the most recently interacted surfaces SHOULD consume animation work.
 - Medium MUST provide a flat fallback when blur or animation is unavailable.
 
@@ -675,6 +685,55 @@ Status indicators use small amounts of light.
 - Progress traces SHOULD be one-dimensional and quiet.
 - Success, warning, and danger remain semantic signals, not mood colors.
 
+### 13.12 Separator
+
+Separators create hierarchy before another container is introduced.
+
+- Prefer a hairline and spacing over an additional Frame.
+- Decorative separators MUST remain hidden from assistive technology.
+- Semantic separators MUST declare their orientation.
+
+### 13.13 Keyboard key
+
+Keyboard notation supports command-oriented desktop behavior.
+
+- Key caps MUST remain quieter than the action label.
+- A sequence MUST preserve the order in which keys are pressed.
+- Keyboard notation MUST supplement, not replace, an accessible action name.
+
+### 13.14 Skeleton
+
+Skeletons preserve layout while content is pending.
+
+- Match the approximate geometry of the expected content.
+- Do not introduce a Lamp or status color.
+- Pulse animation MUST stop for reduced motion.
+
+### 13.15 Breadcrumb
+
+Breadcrumbs expose application location through native navigation.
+
+- Previous levels use links; the current page uses stable language.
+- Separators are decorative.
+- Breadcrumbs MUST NOT become a row of detached pills.
+
+### 13.16 Table
+
+Tables own dense comparable information.
+
+- Columns remain aligned inside one Frame structure.
+- Rows MUST NOT become independent cards.
+- Horizontal overflow MUST remain available on narrow viewports.
+- Headers and captions MUST retain native table semantics.
+
+### 13.17 Empty state
+
+Empty states explain absence and offer the next meaningful action.
+
+- Use at most one Lamp action.
+- Do not fill absence with decorative glass or live Medium.
+- Copy SHOULD explain both what is absent and how to proceed.
+
 ## 14. Accessibility floor
 
 Every Aramon interface MUST provide:
@@ -900,4 +959,3 @@ The source implementation includes:
 
 **Aramon Medium Physics 1.0.0**  
 Approved baseline - 11 August 2026
-

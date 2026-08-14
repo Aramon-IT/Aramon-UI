@@ -60,6 +60,8 @@ export function DialogContent({ children, className, ...props }: DialogContentPr
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
+  if (!open) return null;
+
   return (
     <dialog
       ref={ref}

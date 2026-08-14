@@ -2,6 +2,7 @@
 
 import type { HTMLAttributes, ReactNode } from "react";
 import { MediumSurface } from "@aramon/medium/react";
+import type { MediumInteraction } from "@aramon/medium";
 import { cn } from "./lib/cn";
 
 export interface FocusVesselProps extends HTMLAttributes<HTMLDivElement> {
@@ -9,11 +10,12 @@ export interface FocusVesselProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
   metric?: string;
   action?: ReactNode;
+  interaction?: MediumInteraction;
 }
 
-export function FocusVessel({ action, children, className, eyebrow = "FOCUS VESSEL", metric, title, ...props }: FocusVesselProps) {
+export function FocusVessel({ action, children, className, eyebrow = "FOCUS VESSEL", interaction = "stir", metric, title, ...props }: FocusVesselProps) {
   return (
-    <MediumSurface density="focus" interaction="stir" className={cn("min-h-72 p-6", className)} {...props}>
+    <MediumSurface density="focus" interaction={interaction} className={cn("min-h-72 p-6", className)} {...props}>
       <div className="flex h-full min-h-60 flex-col">
         <span className="text-[9px] font-medium tracking-[.14em] text-[rgba(255,255,255,.62)]">{eyebrow}</span>
         <div className="my-auto py-8">
