@@ -15,7 +15,7 @@ export function ProgressTrace({ className, value, label = "Progress", ...props }
       </div>
       <div className="h-px overflow-visible bg-[var(--aramon-hairline-strong)]" role="progressbar" aria-label={label} aria-valuemin={0} aria-valuemax={100} aria-valuenow={safeValue}>
         <div className="relative h-px bg-[var(--aramon-ink)] transition-[width] duration-500 ease-aramon" style={{ width: `${safeValue}%` }}>
-          <i aria-hidden="true" className="absolute -right-0.5 -top-0.5 size-1 rounded-full bg-[var(--aramon-ink)] shadow-[0_0_10px_var(--aramon-ink)]" />
+          <i aria-hidden="true" className="absolute -end-0.5 -top-0.5 size-1 rounded-full bg-[var(--aramon-ink)]" />
         </div>
       </div>
     </div>

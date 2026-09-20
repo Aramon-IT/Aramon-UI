@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-20T00:00:00.000Z",
+  "title": "Design System: Aramon UI",
+  "extensions": {
+    "colorMeta": {
+      "lamp-light": { "role": "primary", "displayName": "Lamp Ink", "canonical": "#1d1d1f", "tonalRamp": ["#171719", "#2d2d30", "#454549", "#636368", "#85858a", "#aaaab0", "#d2d2d7", "#f5f5f7"] },
+      "lamp-dark": { "role": "primary", "displayName": "Lamp Ivory", "canonical": "#f5efe5", "tonalRamp": ["#211d18", "#3c342b", "#5c5042", "#7f6f5c", "#a3917a", "#c8b69f", "#e6dac9", "#fbf8f3"] },
+      "desk-light": { "role": "neutral", "displayName": "Clear Desk", "canonical": "#ffffff", "tonalRamp": ["#202022", "#3a3a3d", "#57575b", "#77777c", "#99999e", "#bdbdc2", "#dedee2", "#ffffff"] },
+      "desk-dark": { "role": "neutral", "displayName": "Night Desk", "canonical": "#09090b", "tonalRamp": ["#09090b", "#202023", "#39393d", "#56565b", "#76767c", "#99999f", "#c4c4c9", "#f5f5f7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Documentation Display", "purpose": "Documentation and marketing statements only." },
+      "body": { "displayName": "Product Body", "purpose": "Readable product and documentation copy in every locale." },
+      "label": { "displayName": "Control Label", "purpose": "Sentence-case control and compact metadata labels." }
+    },
+    "shadows": [
+      { "name": "floating", "value": "0 12px 40px rgb(0 0 0 / 0.12)", "purpose": "Floating navigation and transient elevated controls." },
+      { "name": "top-layer", "value": "0 24px 80px rgb(0 0 0 / 0.24)", "purpose": "Dialogs only." }
+    ],
+    "motion": [
+      { "name": "feedback", "value": "120ms", "purpose": "Immediate pressed and status feedback." },
+      { "name": "control", "value": "200ms", "purpose": "Hover, focus, selection, and disclosure." },
+      { "name": "entrance", "value": "420ms", "purpose": "Bounded content entrances." },
+      { "name": "material", "value": "700ms cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Medium and material transitions only." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "wide", "value": "1440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Lamp Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The only primary action treatment.",
+      "html": "<button class=\"ds-lamp\">Continue</button>",
+      "css": ".ds-lamp{min-height:44px;padding:12px 18px;border:0;border-radius:12px;corner-shape:squircle;background:#1d1d1f;color:#fff;font:600 14px/1 system-ui;transition:transform 120ms,background 200ms}.ds-lamp:hover{background:#303033}.ds-lamp:active{transform:scale(.98)}.ds-lamp:focus-visible{outline:2px solid #1d1d1f;outline-offset:3px}"
+    },
+    {
+      "name": "Frame",
+      "kind": "card",
+      "refersTo": "frame",
+      "description": "A quiet architectural surface for grouped content.",
+      "html": "<section class=\"ds-frame\"><strong>Frame</strong><p>Stable content, quietly grouped.</p></section>",
+      "css": ".ds-frame{padding:24px;border:1px solid #d2d2d7;border-radius:20px;corner-shape:squircle;background:#fff;color:#1d1d1f;font:400 16px/1.5 system-ui}.ds-frame strong{display:block;margin-block-end:8px;font-weight:600}.ds-frame p{margin:0;color:#6e6e73}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A neutral field with explicit focus and invalid states.",
+      "html": "<input class=\"ds-input\" aria-label=\"Email\" placeholder=\"name@example.com\">",
+      "css": ".ds-input{min-height:44px;padding:10px 12px;border:1px solid #d2d2d7;border-radius:12px;corner-shape:squircle;background:#fff;color:#1d1d1f;font:400 16px/1.4 system-ui}.ds-input:focus-visible{outline:2px solid #1d1d1f;outline-offset:2px}.ds-input[aria-invalid=true]{border-color:#b42318}"
+    },
+    {
+      "name": "Floating Navigation",
+      "kind": "nav",
+      "refersTo": "floating-navbar",
+      "description": "Container-aware navigation with a squircle shell and mobile fallback.",
+      "html": "<nav class=\"ds-nav\"><a aria-current=\"page\">Overview</a><a>Components</a><a>Patterns</a></nav>",
+      "css": ".ds-nav{display:flex;gap:4px;padding:6px;border:1px solid #d2d2d7;border-radius:16px;corner-shape:squircle;background:#fff;box-shadow:0 12px 40px rgb(0 0 0/.12);font:600 13px/1 system-ui}.ds-nav a{padding:10px 12px;border-radius:10px;color:#6e6e73}.ds-nav a[aria-current=page]{background:#f5f5f7;color:#1d1d1f}.ds-nav a:focus-visible{outline:2px solid #1d1d1f;outline-offset:2px}"
+    },
+    {
+      "name": "Medium",
+      "kind": "custom",
+      "refersTo": "medium",
+      "description": "A rare neutral focus vessel with controlled material depth.",
+      "html": "<section class=\"ds-medium\"><strong>Medium</strong><span>Earned focus</span></section>",
+      "css": ".ds-medium{padding:28px;border:1px solid #343438;border-radius:28px;corner-shape:squircle;background:radial-gradient(120% 90% at 34% 0%,rgb(255 255 255/.1),transparent 54%),#111113;color:#f5f5f7;font:400 15px/1.4 system-ui}.ds-medium strong{display:block;font-size:20px}.ds-medium span{color:#a1a1a6}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Precision Light Table",
+    "overview": "Aramon UI feels like a calibrated technical field guide laid on a near-white light table. Information is quiet, exact, and generous; structural rules, type, and whitespace do most of the work. Material light is the rare specimen under examination.",
+    "keyCharacteristics": ["Light-first neutral fields with complete dark parity.", "One sans-serif voice across interface and documentation.", "A 4px spatial rhythm and consistent squircle hierarchy.", "State is communicated through form, contrast, copy, and motion—not color alone.", "One memorable material moment per composition, at most."],
+    "rules": [
+      { "name": "The Lamp Rule", "body": "Lamp is the only primary action treatment; shared UI has no canonical blue or maroon action color.", "section": "colors" },
+      { "name": "The Material Budget Rule", "body": "A composition receives at most one persistent Medium or material-video region. Ordinary surfaces remain flat and neutral.", "section": "colors" },
+      { "name": "The Flat-by-Default Rule", "body": "Resting controls and Frames do not need a shadow to announce themselves.", "section": "elevation" }
+    ],
+    "dos": ["Do let whitespace, type, and dividers carry ordinary hierarchy.", "Do use logical properties and verify English, French, Arabic, and RTL content extremes.", "Do reserve longer motion for Medium and cap normal feedback at 420ms."],
+    "donts": ["Don't reintroduce serif display type, pill controls, asymmetric radii, broad glassmorphism, or decorative glows.", "Don't use the material video on dense product screens.", "Don't animate ordinary labels, forms, tables, or repeated navigation text."]
+  }
+}

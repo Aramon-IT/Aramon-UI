@@ -20,7 +20,7 @@ export function FocusVessel({ action, children, className, eyebrow = "FOCUS VESS
         <span className="text-[9px] font-medium tracking-[.14em] text-[rgba(255,255,255,.62)]">{eyebrow}</span>
         <div className="my-auto py-8">
           {metric ? <strong className="block font-mono text-5xl font-light tracking-[-.08em]">{metric}</strong> : null}
-          <h3 className="mt-3 font-serif text-2xl font-normal tracking-[-.03em]">{title}</h3>
+          <h3 className="mt-3 text-2xl font-semibold tracking-[-.03em]">{title}</h3>
           {children ? <div className="mt-2 text-xs leading-relaxed text-[rgba(255,255,255,.76)] drop-shadow-[0_1px_4px_rgba(0,0,0,.55)]">{children}</div> : null}
         </div>
         {action ? <div className="self-end">{action}</div> : null}

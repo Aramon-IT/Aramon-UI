@@ -1,52 +1,90 @@
 :root,
-[data-aramon-theme="dark"] {
-  color-scheme: dark;
-  --aramon-desk: #0d0c0e;
-  --aramon-desk-deep: #080709;
-  --aramon-frame: rgba(20, 18, 21, 0.66);
-  --aramon-well: rgba(1, 1, 2, 0.4);
-  --aramon-ink: #eeeae4;
-  --aramon-ink-2: rgba(238, 234, 228, 0.64);
-  --aramon-ink-3: rgba(238, 234, 228, 0.38);
-  --aramon-hairline: rgba(238, 234, 228, 0.14);
-  --aramon-hairline-strong: rgba(238, 234, 228, 0.27);
-  --aramon-medium-top: 24, 26, 27;
-  --aramon-medium-bottom: 3, 4, 5;
-  --aramon-glint: 218, 235, 226;
-  --aramon-lamp-top: #fff5e8;
-  --aramon-lamp-bottom: #e8d3b8;
-  --aramon-lamp-ink: #211711;
-  --aramon-success: #9cc9af;
-  --aramon-attention: #e0c58d;
-  --aramon-critical: #e1a09c;
-  --aramon-signal: #9fc7d7;
-  --aramon-display: "Iowan Old Style", Baskerville, "Times New Roman", serif;
-  --aramon-ui: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
-  --aramon-mono: "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
-  --aramon-ease: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 [data-aramon-theme="light"] {
   color-scheme: light;
-  --aramon-desk: #e9f0ef;
-  --aramon-desk-deep: #d8e5e6;
-  --aramon-frame: rgba(249, 252, 251, 0.66);
-  --aramon-well: rgba(39, 83, 98, 0.08);
-  --aramon-ink: #18272d;
-  --aramon-ink-2: rgba(24, 39, 45, 0.68);
-  --aramon-ink-3: rgba(24, 39, 45, 0.45);
-  --aramon-hairline: rgba(27, 56, 66, 0.14);
-  --aramon-hairline-strong: rgba(27, 56, 66, 0.25);
-  --aramon-medium-top: 24, 26, 27;
-  --aramon-medium-bottom: 3, 4, 5;
-  --aramon-glint: 214, 235, 242;
-  --aramon-lamp-top: #202629;
-  --aramon-lamp-bottom: #080a0b;
-  --aramon-lamp-ink: #f8faf8;
-  --aramon-success: #327358;
-  --aramon-attention: #86611d;
-  --aramon-critical: #a23f3c;
-  --aramon-signal: #356f86;
+  --aramon-desk: #ffffff;
+  --aramon-desk-subtle: #f5f5f7;
+  --aramon-desk-deep: #e8e8ed;
+  --aramon-frame: #ffffff;
+  --aramon-frame-raised: #fafafa;
+  --aramon-control: #f5f5f7;
+  --aramon-well: #f5f5f7;
+  --aramon-ink: #1d1d1f;
+  --aramon-ink-2: #515154;
+  --aramon-ink-3: #6e6e73;
+  --aramon-hairline: #e2e2e7;
+  --aramon-hairline-strong: #c7c7cc;
+  --aramon-lamp: #1d1d1f;
+  --aramon-lamp-hover: #333336;
+  --aramon-lamp-ink: #ffffff;
+  --aramon-medium: #111113;
+  --aramon-medium-raised: #1a1a1d;
+  --aramon-medium-ink: #f5f5f7;
+  --aramon-medium-muted: #a1a1a6;
+  --aramon-glint: 224, 237, 242;
+  --aramon-success: #267a4b;
+  --aramon-attention: #8a5a00;
+  --aramon-critical: #b42318;
+  --aramon-signal: #245c8a;
+  --aramon-focus: #1d1d1f;
+  --aramon-shadow-floating: 0 12px 40px rgb(0 0 0 / .12);
+  --aramon-shadow-top: 0 24px 80px rgb(0 0 0 / .24);
+  --aramon-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --aramon-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --aramon-mono: "SFMono-Regular", "Cascadia Mono", Consolas, monospace;
+  --aramon-space-1: 4px;
+  --aramon-space-2: 8px;
+  --aramon-space-3: 12px;
+  --aramon-space-4: 16px;
+  --aramon-space-6: 24px;
+  --aramon-space-8: 32px;
+  --aramon-space-12: 48px;
+  --aramon-space-16: 64px;
+  --aramon-radius-compact: 8px;
+  --aramon-radius-control: 12px;
+  --aramon-radius-surface: 20px;
+  --aramon-radius-feature: 28px;
+  --aramon-layer-base: 0;
+  --aramon-layer-sticky: 20;
+  --aramon-layer-popover: 40;
+  --aramon-layer-modal: 60;
+  --aramon-duration-feedback: 120ms;
+  --aramon-duration-control: 200ms;
+  --aramon-duration-entrance: 420ms;
+  --aramon-duration-material: 700ms;
+  --aramon-ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --aramon-ease-material: cubic-bezier(.22, 1, .36, 1);
+  --aramon-ease: var(--aramon-ease-material);
+}
+
+[data-aramon-theme="dark"] {
+  color-scheme: dark;
+  --aramon-desk: #09090b;
+  --aramon-desk-subtle: #111113;
+  --aramon-desk-deep: #000000;
+  --aramon-frame: #161617;
+  --aramon-frame-raised: #1c1c1e;
+  --aramon-control: #222225;
+  --aramon-well: #222225;
+  --aramon-ink: #f5f5f7;
+  --aramon-ink-2: #a1a1a6;
+  --aramon-ink-3: #8e8e93;
+  --aramon-hairline: #2c2c2e;
+  --aramon-hairline-strong: #48484a;
+  --aramon-lamp: #f5efe5;
+  --aramon-lamp-hover: #fffaf2;
+  --aramon-lamp-ink: #1d1d1f;
+  --aramon-medium: #101012;
+  --aramon-medium-raised: #1b1b1e;
+  --aramon-medium-ink: #f5f5f7;
+  --aramon-medium-muted: #a1a1a6;
+  --aramon-glint: 218, 235, 226;
+  --aramon-success: #63b387;
+  --aramon-attention: #d6a952;
+  --aramon-critical: #ff8a82;
+  --aramon-signal: #80add2;
+  --aramon-focus: #f5efe5;
+  --aramon-shadow-floating: 0 12px 40px rgb(0 0 0 / .42);
+  --aramon-shadow-top: 0 24px 80px rgb(0 0 0 / .62);
 }
 
 @theme inline {
@@ -60,12 +98,14 @@
   --font-aramon-display: var(--aramon-display);
   --font-aramon-ui: var(--aramon-ui);
   --font-aramon-mono: var(--aramon-mono);
-  --ease-aramon: var(--aramon-ease);
+  --ease-aramon: var(--aramon-ease-material);
 }
+
+:where(.aramon-frame, .aramon-medium, .aramon-control, .aramon-squircle) { corner-shape: squircle; }
 
 .aramon-frame {
   border: 1px solid var(--aramon-hairline);
-  border-radius: 2px 2px 12px 12px;
+  border-radius: var(--aramon-radius-surface);
   background: var(--aramon-frame);
 }
 
@@ -73,142 +113,52 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  color: #f2f5f3;
-  border: 1px solid rgba(var(--aramon-glint), 0.22);
-  border-radius: 18px 18px 7px 7px;
-  background:
-    radial-gradient(120% 90% at 34% 0%, rgba(var(--aramon-glint), 0.16), transparent 54%),
-    linear-gradient(
-      156deg,
-      rgba(var(--aramon-medium-top), var(--aramon-medium-alpha-top, 0.43)),
-      rgba(var(--aramon-medium-bottom), var(--aramon-medium-alpha-bottom, 0.57))
-    );
-  box-shadow:
-    inset 0 1px 0 rgba(var(--aramon-glint), 0.28),
-    inset 0 -70px 90px -60px rgba(0, 0, 0, 0.66);
-  -webkit-backdrop-filter: blur(32px) saturate(1.34);
-  backdrop-filter: blur(32px) saturate(1.34);
+  color: var(--aramon-medium-ink);
+  border: 1px solid rgb(255 255 255 / .12);
+  border-radius: var(--aramon-radius-feature);
+  background: radial-gradient(120% 90% at 34% 0%, rgba(var(--aramon-glint), .12), transparent 54%), var(--aramon-medium);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .1);
 }
 
 .aramon-medium::before,
-.aramon-medium::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
+.aramon-medium::after { content: ""; position: absolute; z-index: 0; pointer-events: none; will-change: transform, opacity; }
 .aramon-medium::before {
   inset: -42%;
-  background:
-    radial-gradient(ellipse at 26% 42%, rgba(var(--aramon-glint), 0.2) 0 9%, transparent 36%),
-    radial-gradient(ellipse at 72% 58%, rgba(var(--aramon-glint), 0.13) 0 8%, transparent 32%);
+  background: radial-gradient(ellipse at 26% 42%, rgba(var(--aramon-glint), .14) 0 9%, transparent 36%), radial-gradient(ellipse at 72% 58%, rgba(var(--aramon-glint), .08) 0 8%, transparent 32%);
   filter: blur(18px);
-  opacity: 0.8;
-  transform: translate3d(-4%, -2%, 0) rotate(-8deg) scale(1.04);
-  animation: aramon-medium-drift 8.4s var(--aramon-ease) infinite alternate;
+  opacity: .7;
+  animation: aramon-medium-drift 8.4s var(--aramon-ease-material) infinite alternate;
 }
-
 .aramon-medium::after {
   inset: -18%;
   border-radius: 46%;
-  background: linear-gradient(112deg, transparent 34%, rgba(var(--aramon-glint), 0.12) 50%, transparent 66%);
+  background: linear-gradient(112deg, transparent 34%, rgba(var(--aramon-glint), .1) 50%, transparent 66%);
   filter: blur(12px);
-  opacity: 0.46;
-  transform: translate3d(-18%, 8%, 0) rotate(9deg);
+  opacity: .4;
   animation: aramon-medium-caustic 6.8s ease-in-out infinite alternate;
 }
 
+.aramon-medium__content { position: relative; z-index: 2; height: 100%; }
+.aramon-medium__fluid { position: absolute; inset: -12%; z-index: 1; width: 124%; height: 124%; pointer-events: none; opacity: .7; filter: blur(10px) saturate(1.1); mix-blend-mode: screen; }
+.aramon-dialog-medium { box-shadow: var(--aramon-shadow-top); }
+.aramon-dialog-title { color: var(--aramon-medium-ink); }
+.aramon-dialog-description, .aramon-dialog-close-quiet { color: var(--aramon-medium-muted); }
+.aramon-dialog-close-quiet:hover { color: var(--aramon-medium-ink); background: rgb(255 255 255 / .08); }
+.aramon-lamp { color: var(--aramon-lamp-ink); background: var(--aramon-lamp); border-color: transparent; box-shadow: inset 0 1px 0 rgb(255 255 255 / .12); }
+
 @keyframes aramon-medium-drift {
-  0% { transform: translate3d(-5%, -3%, 0) rotate(-8deg) scale(1.04, 0.98); }
-  48% { transform: translate3d(2%, 4%, 0) rotate(4deg) scale(0.98, 1.07); }
-  100% { transform: translate3d(7%, -1%, 0) rotate(11deg) scale(1.08, 0.96); }
+  from { transform: translate3d(-5%, -3%, 0) rotate(-8deg) scale(1.04, .98); }
+  to { transform: translate3d(7%, -1%, 0) rotate(11deg) scale(1.08, .96); }
 }
-
 @keyframes aramon-medium-caustic {
-  0% { transform: translate3d(-20%, 8%, 0) rotate(9deg) scaleX(0.9); opacity: 0.3; }
-  55% { transform: translate3d(2%, -3%, 0) rotate(-3deg) scaleX(1.08); opacity: 0.54; }
-  100% { transform: translate3d(18%, 5%, 0) rotate(-12deg) scaleX(0.94); opacity: 0.38; }
-}
-
-.aramon-medium__content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-}
-
-.aramon-medium__fluid {
-  position: absolute;
-  inset: -12%;
-  z-index: 1;
-  width: 124%;
-  height: 124%;
-  pointer-events: none;
-  opacity: 0.82;
-  filter: blur(10px) saturate(1.18);
-  mix-blend-mode: screen;
-  transform: translateZ(0);
-}
-
-.aramon-dialog-medium {
-  background:
-    radial-gradient(110% 80% at 30% 0%, rgba(var(--aramon-glint), 0.1), transparent 58%),
-    linear-gradient(
-      156deg,
-      rgba(var(--aramon-medium-top), var(--aramon-medium-alpha-top, 0.3)),
-      rgba(var(--aramon-medium-bottom), var(--aramon-medium-alpha-bottom, 0.42))
-    );
-  -webkit-backdrop-filter: blur(42px) saturate(1.28);
-  backdrop-filter: blur(42px) saturate(1.28);
-  box-shadow:
-    inset 0 1px 0 rgba(var(--aramon-glint), 0.28),
-    inset 0 -48px 74px -58px rgba(0, 0, 0, 0.58),
-    0 28px 80px -34px rgba(0, 0, 0, 0.7);
-}
-
-.aramon-dialog-title {
-  color: #fff;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.55);
-}
-
-.aramon-dialog-description {
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
-}
-
-.aramon-dialog-close-quiet {
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.aramon-dialog-close-quiet:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-[data-aramon-theme="light"] .aramon-medium__fluid {
-  opacity: 0.7;
+  from { transform: translate3d(-20%, 8%, 0) rotate(9deg) scaleX(.9); opacity: .25; }
+  to { transform: translate3d(18%, 5%, 0) rotate(-12deg) scaleX(.94); opacity: .4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aramon-medium::before,
-  .aramon-medium::after {
-    animation: none;
-    will-change: auto;
-  }
+  .aramon-medium::before, .aramon-medium::after { animation: none; will-change: auto; }
 }
-
 .aramon-medium[data-medium-engine="static"]::before,
 .aramon-medium[data-medium-engine="static"]::after,
 .aramon-medium[data-medium-physics="off"]::before,
-.aramon-medium[data-medium-physics="off"]::after {
-  animation: none;
-  will-change: auto;
-}
-
-.aramon-lamp {
-  color: var(--aramon-lamp-ink);
-  background: linear-gradient(180deg, var(--aramon-lamp-top), var(--aramon-lamp-bottom));
-  border: 1px solid rgba(var(--aramon-glint), 0.2);
-  box-shadow: 0 12px 30px -16px rgba(var(--aramon-glint), 0.62);
-}
+.aramon-medium[data-medium-physics="off"]::after { animation: none; will-change: auto; }

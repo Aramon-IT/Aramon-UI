@@ -6,12 +6,20 @@
   "engines": {
     "node": ">=20.9"
   },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0",
+    "ajv": "^8.17.1"
+  },
   "scripts": {
     "dev": "pnpm registry:build && pnpm --filter @aramon/docs dev",
     "build": "pnpm registry:build && pnpm -r --if-present build",
     "registry:build": "node scripts/build-registry.mjs",
     "registry:check": "node scripts/build-registry.mjs --check",
     "typecheck": "pnpm -r --if-present typecheck",
-    "lint": "pnpm -r --if-present lint"
+    "lint": "pnpm -r --if-present lint",
+    "test": "pnpm -r --if-present test",
+    "e2e": "playwright test",
+    "check": "pnpm registry:check && pnpm typecheck && pnpm lint && pnpm test && pnpm build && pnpm e2e"
   }
 }

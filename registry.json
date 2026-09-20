@@ -114,6 +114,64 @@
       "files": [{ "path": "packages/ui/src/progress-trace.tsx", "type": "registry:ui", "target": "~/components/aramon/progress-trace.tsx" }]
     },
     {
+      "name": "animated-list",
+      "type": "registry:ui",
+      "title": "Animated List",
+      "description": "Semantic controlled lists with layout transitions and polite announcements.",
+      "dependencies": ["motion@13.4.0"],
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/animated-list.tsx", "type": "registry:ui", "target": "~/components/aramon/animated-list.tsx" }]
+    },
+    {
+      "name": "notification-badge",
+      "type": "registry:ui",
+      "title": "Notification Badge",
+      "description": "Accessible dot, count, and presence attachments using logical positions.",
+      "dependencies": ["motion@13.4.0"],
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/notification-badge.tsx", "type": "registry:ui", "target": "~/components/aramon/notification-badge.tsx" }]
+    },
+    {
+      "name": "floating-navbar",
+      "type": "registry:ui",
+      "title": "Floating Navbar",
+      "description": "Controlled or uncontrolled navigation with container-aware auto-hide.",
+      "dependencies": ["motion@13.4.0"],
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/floating-navbar.tsx", "type": "registry:ui", "target": "~/components/aramon/floating-navbar.tsx" }]
+    },
+    {
+      "name": "text-morph",
+      "type": "registry:ui",
+      "title": "Text Morph",
+      "description": "Opt-in word or character morphing with intact accessible text.",
+      "dependencies": ["motion@13.4.0"],
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/text-morph.tsx", "type": "registry:ui", "target": "~/components/aramon/text-morph.tsx" }]
+    },
+    {
+      "name": "blur-out-up",
+      "type": "registry:ui",
+      "title": "Blur Out Up",
+      "description": "Bounded text entrance for mount, viewport, or controlled triggers.",
+      "dependencies": ["motion@13.4.0"],
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/blur-out-up.tsx", "type": "registry:ui", "target": "~/components/aramon/blur-out-up.tsx" }]
+    },
+    {
+      "name": "material-background",
+      "type": "registry:ui",
+      "title": "Material Background",
+      "description": "Poster-first responsive material video with Save Data and reduced-motion fallbacks.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/material-background.tsx", "type": "registry:ui", "target": "~/components/aramon/material-background.tsx" }],
+      "assets": [
+        { "path": "apps/docs/public/aramon/material/material-background.webm", "target": "~/public/aramon/material/material-background.webm", "mimeType": "video/webm", "sha256": "cdf918bf1d3092405c0039f6af32db2600e1c33ddc77bacc4d16193602e181d7" },
+        { "path": "apps/docs/public/aramon/material/material-background.mp4", "target": "~/public/aramon/material/material-background.mp4", "mimeType": "video/mp4", "sha256": "15be237c004ec3715ea7f95e8aedd2c4df3476d887d7cba6257e1ecdb76dfc88" },
+        { "path": "apps/docs/public/aramon/material/material-background.webp", "target": "~/public/aramon/material/material-background.webp", "mimeType": "image/webp", "sha256": "53ac1267b4cb2de6e2cf4057d9031789b21015643028d724d1c0468305f0551a" }
+      ]
+    },
+    {
       "name": "frame",
       "type": "registry:ui",
       "title": "Frame",
@@ -209,11 +267,27 @@
       ]
     },
     {
+      "name": "identity-entry",
+      "type": "registry:block",
+      "title": "Identity Entry",
+      "description": "Sparse localized entry flow with material background, inline errors, and confirmation.",
+      "registryDependencies": ["material-background", "button", "input"],
+      "files": [{ "path": "apps/docs/src/app/_components/identity-proof.tsx", "type": "registry:block", "target": "~/components/aramon/recipes/identity-entry.tsx" }]
+    },
+    {
+      "name": "classroom-presence",
+      "type": "registry:block",
+      "title": "Classroom Presence",
+      "description": "High-interaction presence composition without ambient material video.",
+      "registryDependencies": ["animated-list", "notification-badge", "floating-navbar", "button"],
+      "files": [{ "path": "apps/docs/src/app/_components/classroom-proof.tsx", "type": "registry:block", "target": "~/components/aramon/recipes/classroom-presence.tsx" }]
+    },
+    {
       "name": "aramon-ui",
       "type": "registry:item",
       "title": "Aramon UI System",
       "description": "Install the complete current Aramon UI foundation and component catalog.",
-      "registryDependencies": ["button", "badge", "avatar", "input", "select", "checkbox", "switch", "radio-card", "tabs", "alert", "tooltip", "progress-trace", "frame", "separator", "kbd", "skeleton", "breadcrumb", "empty-state", "table", "focus-vessel", "dialog", "agent-prompts"]
+      "registryDependencies": ["button", "badge", "avatar", "input", "select", "checkbox", "switch", "radio-card", "tabs", "alert", "tooltip", "progress-trace", "animated-list", "notification-badge", "floating-navbar", "text-morph", "blur-out-up", "material-background", "frame", "separator", "kbd", "skeleton", "breadcrumb", "empty-state", "table", "focus-vessel", "dialog", "agent-prompts", "identity-entry", "classroom-presence"]
     }
   ]
 }

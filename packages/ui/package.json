@@ -17,6 +17,11 @@
     "./frame": "./src/frame.tsx",
     "./input": "./src/input.tsx",
     "./kbd": "./src/kbd.tsx",
+    "./animated-list": "./src/animated-list.tsx",
+    "./blur-out-up": "./src/blur-out-up.tsx",
+    "./floating-navbar": "./src/floating-navbar.tsx",
+    "./material-background": "./src/material-background.tsx",
+    "./notification-badge": "./src/notification-badge.tsx",
     "./progress-trace": "./src/progress-trace.tsx",
     "./radio-card": "./src/radio-card.tsx",
     "./select": "./src/select.tsx",
@@ -25,19 +30,30 @@
     "./switch": "./src/switch.tsx",
     "./table": "./src/table.tsx",
     "./tabs": "./src/tabs.tsx",
+    "./text-morph": "./src/text-morph.tsx",
     "./tooltip": "./src/tooltip.tsx"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "peerDependencies": {
-    "react": ">=19"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "dependencies": {
-    "@aramon/medium": "workspace:*"
+    "@aramon/medium": "workspace:*",
+    "motion": "13.4.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
-    "typescript": "^5.9.3"
+    "@types/react-dom": "^19.2.3",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "26.1.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4",
+    "vitest-axe": "^0.1.0"
   }
 }

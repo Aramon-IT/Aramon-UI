@@ -195,7 +195,7 @@ export function PreviewWorkspace({ mode = "approval" }: { mode?: WorkspaceMode }
 
             <div className={styles.commandRule} />
             <div className={styles.quickForm}>
-              <FieldLabel>{library ? "Install" : "Intention"}<Input readOnly={library} defaultValue={library ? "aramon-ui add button" : "Understand before remembering"} /></FieldLabel>
+              <FieldLabel>{library ? "Install" : "Intention"}<Input readOnly={library} defaultValue={library ? "shadcn add ui.aramon.ma/r/button.json" : "Understand before remembering"} /></FieldLabel>
               <FieldLabel>{library ? "Target" : "Rhythm"}<Select defaultValue={library ? "next" : "50"}>{library ? <><option value="next">Next.js + Tailwind 4</option><option value="react">React + Tailwind 4</option></> : <><option value="25">25 minute pulse</option><option value="50">50 minute focus</option><option value="90">90 minute studio</option></>}</Select></FieldLabel>
               <Switch defaultChecked label={library ? "Both fields" : "Quiet signals"} description={library ? "Every component is reviewed in light and dark." : "Keep only essential notifications."} />
             </div>

@@ -1,6 +1,6 @@
 # Aramon UI
 
-Aramon UI is a source-owned React, Next.js, and Tailwind CSS component system for focused desktop-like applications.
+Aramon UI is a source-owned React, Next.js, and Tailwind CSS design system for Aramon applications and the AI agents that build them.
 
 It is built around four material roles:
 
@@ -166,16 +166,16 @@ Use `interaction="off"` on `FocusVessel` when a specimen or supporting surface s
 
 ## Component catalog
 
-The current system contains 18 documented families:
+The v1 documentation catalog contains 27 components:
 
 | Responsibility | Components |
 | --- | --- |
-| Actions and status | Button, Badge, Alert, Progress Trace |
-| Identity and entry | Avatar, Input, Textarea, Select |
-| Choice | Checkbox, Switch, Radio Card, Tabs |
-| Architecture | Frame, Separator, Breadcrumb, Table, Empty State |
-| Utility | Tooltip, Keyboard Key, Skeleton |
-| Earned depth | Focus Vessel, Dialog, Medium Surface |
+| Actions and entry | Button, Input, Select, Checkbox, Switch, Radio Card |
+| Navigation | Tabs, Breadcrumb, Floating Navbar |
+| Feedback | Alert, Badge, Notification Badge, Tooltip, Progress Trace |
+| Data | Avatar, Animated List, Table, Empty State, Keyboard Key |
+| Surfaces | Frame, Focus Vessel, Dialog, Separator, Skeleton |
+| Motion and media | Material Background, Text Morph, Blur Out Up |
 
 Some families contain multiple related primitives, so the public registry currently exposes more installable items than the family count.
 
@@ -183,7 +183,7 @@ Some families contain multiple related primitives, so the public registry curren
 
 ```text
 aramon-ui init [--cwd <path>] [--registry <url>]
-aramon-ui add <item...> [--overwrite] [--cwd <path>]
+aramon-ui add <item...> [--overwrite] [--cwd <path>] [--package-manager <name>]
 aramon-ui list [--registry <url>]
 aramon-ui view <item> [--registry <url>]
 ```
@@ -235,7 +235,9 @@ pnpm registry:check
 pnpm registry:build
 pnpm typecheck
 pnpm lint
+pnpm test
 pnpm build
+pnpm e2e
 ```
 
 Before adding a new component:
@@ -249,4 +251,4 @@ Before adding a new component:
 
 ## Release status
 
-Aramon UI is currently an early public system under active development. The source registry is usable today; npm publication and stable semantic versioning are upcoming release milestones.
+Aramon UI v1 is implemented and awaiting product sign-off. The source registry is usable today; npm publication and the `v1.0.0` tag remain separate release actions. Existing consumers should review [MIGRATION.md](./MIGRATION.md) before adopting the v1 token and behavior contract.

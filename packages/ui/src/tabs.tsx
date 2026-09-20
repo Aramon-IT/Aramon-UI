@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useId, useState, type ButtonHTMLAttributes, type HTMLAttributes, type KeyboardEvent, type ReactNode } from "react";
+import { createContext, useContext, useId, useState, type ComponentPropsWithRef, type HTMLAttributes, type KeyboardEvent, type ReactNode } from "react";
 import { cn } from "./lib/cn";
 
 interface TabsContextValue {
@@ -39,38 +39,43 @@ export function Tabs({ className, defaultValue, onValueChange, value: controlled
   );
 }
 
-export function TabsList({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
+export function TabsList({ className, onKeyDown: userOnKeyDown, ref, ...props }: ComponentPropsWithRef<"div">) {
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    userOnKeyDown?.(event);
+    if (event.defaultPrevented) return;
     const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
     if (!keys.includes(event.key)) return;
     const tabs = [...event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]:not(:disabled)')];
     const current = tabs.indexOf(document.activeElement as HTMLButtonElement);
     if (current < 0 || !tabs.length) return;
     event.preventDefault();
-    const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (current + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+    const rtl = getComputedStyle(event.currentTarget).direction === "rtl";
+    const direction = event.key === "ArrowRight" ? (rtl ? -1 : 1) : (rtl ? 1 : -1);
+    const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (current + direction + tabs.length) % tabs.length;
     tabs[next]?.focus();
     tabs[next]?.click();
   };
 
-  return <div role="tablist" className={cn("flex gap-1 border-b border-[var(--aramon-hairline)]", className)} onKeyDown={onKeyDown} {...props} />;
+  return <div ref={ref} role="tablist" className={cn("flex gap-1 border-b border-[var(--aramon-hairline)]", className)} onKeyDown={onKeyDown} {...props} />;
 }
 
-export interface TabsTriggerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface TabsTriggerProps extends ComponentPropsWithRef<"button"> {
   value: string;
 }
 
-export function TabsTrigger({ className, onClick, value, ...props }: TabsTriggerProps) {
+export function TabsTrigger({ className, onClick, ref, value, ...props }: TabsTriggerProps) {
   const context = useTabsContext();
   const active = context.value === value;
   return (
     <button
       type="button"
+      ref={ref}
       role="tab"
       id={`${context.baseId}-tab-${value}`}
       aria-controls={`${context.baseId}-panel-${value}`}
       aria-selected={active}
       tabIndex={active ? 0 : -1}
-      className={cn("relative min-h-10 px-3 text-xs text-aramon-ink-3 transition hover:text-aramon-ink focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[var(--aramon-ink)] after:absolute after:inset-x-2 after:bottom-[-1px] after:h-px after:origin-center after:scale-x-0 after:bg-[var(--aramon-ink)] after:transition-transform aria-selected:text-aramon-ink aria-selected:after:scale-x-100", className)}
+      className={cn("relative min-h-11 px-3 text-xs text-aramon-ink-3 transition hover:text-aramon-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--aramon-focus)] after:absolute after:inset-x-2 after:bottom-[-1px] after:h-px after:origin-center after:scale-x-0 after:bg-[var(--aramon-ink)] after:transition-transform aria-selected:text-aramon-ink aria-selected:after:scale-x-100", className)}
       onClick={(event) => { onClick?.(event); if (!event.defaultPrevented) context.setValue(value); }}
       {...props}
     />

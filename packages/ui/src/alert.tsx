@@ -1,9 +1,9 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { cn } from "./lib/cn";
 
 export type AlertTone = "info" | "positive" | "attention" | "critical";
 
-export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
+export interface AlertProps extends ComponentPropsWithRef<"div"> {
   action?: ReactNode;
   title: string;
   tone?: AlertTone;
@@ -16,9 +16,9 @@ const tones: Record<AlertTone, string> = {
   critical: "border-[color-mix(in_srgb,var(--aramon-critical)_34%,transparent)] before:bg-[var(--aramon-critical)]",
 };
 
-export function Alert({ action, children, className, title, tone = "info", ...props }: AlertProps) {
+export function Alert({ action, children, className, ref, title, tone = "info", ...props }: AlertProps) {
   return (
-    <div role={tone === "critical" ? "alert" : "status"} className={cn("relative grid min-h-20 grid-cols-[1fr_auto] items-center gap-5 overflow-hidden rounded-[2px_2px_10px_10px] border bg-aramon-frame px-5 py-4 text-aramon-ink before:absolute before:inset-y-0 before:left-0 before:w-px", tones[tone], className)} {...props}>
+    <div ref={ref} role={tone === "critical" ? "alert" : "status"} className={cn("aramon-squircle relative grid min-h-20 grid-cols-[1fr_auto] items-center gap-5 overflow-hidden rounded-[var(--aramon-radius-control)] border bg-aramon-frame px-5 py-4 text-aramon-ink before:absolute before:inset-y-0 before:start-0 before:w-px", tones[tone], className)} {...props}>
       <div>
         <strong className="block text-sm font-medium">{title}</strong>
         {children ? <div className="mt-1 text-xs leading-relaxed text-aramon-ink-3">{children}</div> : null}

@@ -1,24 +1,74 @@
-import type { HTMLAttributes, ReactNode } from "react";
+"use client";
+
+import { cloneElement, useEffect, useId, useRef, useState, type ComponentPropsWithRef, type CSSProperties, type ReactElement, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "./lib/cn";
 
 export type TooltipSide = "top" | "right" | "bottom";
 
-export interface TooltipProps extends Omit<HTMLAttributes<HTMLSpanElement>, "content"> {
+export interface TooltipProps extends Omit<ComponentPropsWithRef<"span">, "content" | "children"> {
+  children: ReactElement<{ "aria-describedby"?: string }>;
   content: ReactNode;
   side?: TooltipSide;
 }
 
-const sideClasses: Record<TooltipSide, string> = {
-  top: "bottom-[calc(100%+.6rem)] left-1/2 -translate-x-1/2 group-hover:-translate-y-0.5 group-focus-within:-translate-y-0.5",
-  right: "left-[calc(100%+.6rem)] top-1/2 -translate-y-1/2 group-hover:translate-x-0.5 group-focus-within:translate-x-0.5",
-  bottom: "left-1/2 top-[calc(100%+.6rem)] -translate-x-1/2 group-hover:translate-y-0.5 group-focus-within:translate-y-0.5",
-};
+export function Tooltip({ children, className, content, ref, side = "top", ...props }: TooltipProps) {
+  const id = useId();
+  const anchorRef = useRef<HTMLSpanElement | null>(null);
+  const [open, setOpen] = useState(false);
+  const [style, setStyle] = useState<CSSProperties>();
 
-export function Tooltip({ children, className, content, side = "top", ...props }: TooltipProps) {
+  const setRefs = (node: HTMLSpanElement | null) => {
+    anchorRef.current = node;
+    if (typeof ref === "function") ref(node);
+    else if (ref) ref.current = node;
+  };
+
+  useEffect(() => {
+    if (!open || !anchorRef.current) return;
+    const update = () => {
+      const box = anchorRef.current?.getBoundingClientRect();
+      if (!box) return;
+      const positions = {
+        top: { left: box.left + box.width / 2, top: box.top - 10, transform: "translate(-50%, -100%)" },
+        right: { left: box.right + 10, top: box.top + box.height / 2, transform: "translate(0, -50%)" },
+        bottom: { left: box.left + box.width / 2, top: box.bottom + 10, transform: "translate(-50%, 0)" },
+      } satisfies Record<TooltipSide, CSSProperties>;
+      setStyle({ position: "fixed", ...positions[side] });
+    };
+    const dismiss = (event: PointerEvent) => { if (!anchorRef.current?.contains(event.target as Node)) setOpen(false); };
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") setOpen(false); };
+    update();
+    window.addEventListener("resize", update);
+    window.addEventListener("scroll", update, true);
+    document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", escape);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", update, true);
+      document.removeEventListener("pointerdown", dismiss);
+      document.removeEventListener("keydown", escape);
+    };
+  }, [open, side]);
+
+  const describedBy = [children.props["aria-describedby"], id].filter(Boolean).join(" ");
   return (
-    <span className={cn("aramon-tooltip group relative inline-flex", className)} {...props}>
-      {children}
-      <span role="tooltip" className={cn("aramon-tooltip__content pointer-events-none absolute z-50 hidden w-max max-w-56 rounded-[5px] border border-[var(--aramon-hairline-strong)] bg-[color-mix(in_srgb,var(--aramon-desk-deep)_92%,transparent)] px-2.5 py-1.5 text-[10px] leading-relaxed text-aramon-ink opacity-0 shadow-xl backdrop-blur-xl transition duration-200 group-hover:block group-hover:opacity-100 group-focus-within:block group-focus-within:opacity-100", sideClasses[side])}>{content}</span>
+    <span
+      ref={setRefs}
+      className={cn("inline-flex", className)}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocusCapture={() => setOpen(true)}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false); }}
+      onPointerUp={(event) => { if (event.pointerType === "touch") setOpen((value) => !value); }}
+      {...props}
+    >
+      {cloneElement(children, { "aria-describedby": describedBy })}
+      {open && typeof document !== "undefined" ? createPortal(
+        <span id={id} role="tooltip" style={style} className="aramon-squircle pointer-events-none z-[var(--aramon-layer-popover)] w-max max-w-56 rounded-[10px] border border-[var(--aramon-hairline-strong)] bg-[var(--aramon-frame-raised)] px-3 py-2 text-xs leading-relaxed text-aramon-ink shadow-[var(--aramon-shadow-floating)]">
+          {content}
+        </span>, document.body,
+      ) : null}
     </span>
   );
 }
