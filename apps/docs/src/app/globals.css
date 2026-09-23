@@ -14,8 +14,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .site-shell { min-height: 100dvh; display: grid; grid-template-columns: 248px minmax(0, 1fr); background: var(--aramon-desk); }
 .site-rail { position: sticky; inset-block-start: 0; height: 100dvh; padding: 24px 18px; display: flex; flex-direction: column; border-inline-end: 1px solid var(--aramon-hairline); background: var(--aramon-desk); overflow-y: auto; }
-.site-brand, .mobile-brand { color: var(--aramon-ink); font-size: 15px; font-weight: 700; letter-spacing: .08em; text-decoration: none; }
-.site-brand span { font-weight: 400; }
+.site-brand, .mobile-brand { align-items: center; gap: 10px; color: var(--aramon-ink); font-size: 15px; font-weight: 700; letter-spacing: .08em; text-decoration: none; }
+.site-brand { display: flex; }
+.brand-mark { width: 30px; height: 30px; flex: none; background: center / contain no-repeat url("/aramon/brand/logo-light.png"); }
+[data-aramon-theme="dark"] .brand-mark { background-image: url("/aramon/brand/logo-dark.png"); }
+.brand-wordmark > span { font-weight: 400; }
 .site-search { position: relative; margin-block: 28px 20px; }
 .site-search input { width: 100%; min-height: 44px; padding-inline: 12px; border: 1px solid var(--aramon-hairline); border-radius: var(--aramon-radius-control); corner-shape: squircle; outline: 0; background: var(--aramon-control); color: var(--aramon-ink); font-size: 12px; }
 .site-search input:focus-visible { border-color: var(--aramon-ink); box-shadow: 0 0 0 2px color-mix(in srgb, var(--aramon-focus) 16%, transparent); }
@@ -216,7 +219,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .site-shell { display: block; }
   .site-rail { display: none; }
   .site-bar { min-height: 56px; padding-inline: 18px; justify-content: flex-end; }
-  .mobile-brand { display: block; margin-inline-end: auto; font-size: 13px; }
+  .mobile-brand { display: flex; margin-inline-end: auto; font-size: 13px; }
+  .mobile-brand .brand-mark { width: 28px; height: 28px; }
   .site-version { display: none; }
   .theme-controls button { min-width: 44px; min-height: 44px; }
   .mobile-nav { display: block; }

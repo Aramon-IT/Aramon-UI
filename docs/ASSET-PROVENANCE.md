@@ -10,3 +10,11 @@
 - Intended use: sparse login, signup, confirmation, and join-session compositions, plus one documentation showcase.
 
 The public registry verifies byte size and checksum before installing these binary assets.
+
+## Aramon header logos
+
+- Source: `Aramon Official Logo.png`, supplied by the Aramon team for dark-theme use.
+- Dark-theme logo SHA-256: `179817a56530a7edee249809ea4a9355670c849e451fa5881bf9524c4debaeb0`
+- Source: `Aramon Official Logo White.png`, supplied by the Aramon team for light-theme use.
+- Light-theme logo SHA-256: `9cdd2394f69431a10f6dbc8a252af01df932ddfa8d9350ef7fe8c349e79106c4`
+- Intended use: documentation navigation brand mark in desktop and mobile headers.

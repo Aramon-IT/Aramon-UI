@@ -13,6 +13,13 @@ const shellCopy = {
   ar: { search: "ابحث في التوثيق", start: "البداية", overview: "نظرة عامة", installation: "التثبيت", foundations: "الأسس", patterns: "الأنماط", components: "المكوّنات", all: "كل المكوّنات", agents: "الوكلاء", prompts: "التوجيهات", menu: "القائمة" },
 } as const;
 
+function BrandLink({ className }: { className: string }) {
+  return <Link href="/" className={className} aria-label="Aramon UI home">
+    <span className="brand-mark" aria-hidden="true" />
+    <span className="brand-wordmark">ARAMON <span>UI</span></span>
+  </Link>;
+}
+
 export function DocsShell({ children, current, localized = false }: { children: ReactNode; current?: string; localized?: boolean }) {
   const { locale } = useDocsLocale();
   const copy = shellCopy[locale];
@@ -24,13 +31,13 @@ export function DocsShell({ children, current, localized = false }: { children: 
   </nav>;
   return <div className="site-shell">
     <aside className="site-rail" aria-label="Documentation navigation">
-      <Link href="/" className="site-brand">ARAMON <span>UI</span></Link>
+      <BrandLink className="site-brand" />
       <SiteSearch items={catalog} placeholder={copy.search} />
       {nav}
       <p>Source-owned · React 19 · v1</p>
     </aside>
     <div className="site-main">
-      <header className="site-bar"><Link href="/" className="mobile-brand">ARAMON UI</Link><span className="site-version">v1.0</span><ThemeControls /><details className="mobile-nav"><summary>{copy.menu}</summary><div><SiteSearch items={catalog} placeholder={copy.search} />{nav}</div></details></header>
+      <header className="site-bar"><BrandLink className="mobile-brand" /><span className="site-version">v1.0</span><ThemeControls /><details className="mobile-nav"><summary>{copy.menu}</summary><div><SiteSearch items={catalog} placeholder={copy.search} />{nav}</div></details></header>
       <div id="main-content" lang={localized ? locale : "en"} dir={localized ? undefined : "ltr"}>{children}</div>
     </div>
   </div>;
