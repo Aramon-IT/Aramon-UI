@@ -11,12 +11,12 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     await page.goto("/");
     await expect(page.getByRole("heading", { name: "Interfaces with a material memory." })).toBeVisible();
-    await expect(page.locator("html")).toHaveAttribute("data-aramon-theme", "light");
+    await expect(page.locator("html")).toHaveAttribute("data-aramon-theme", "dark");
     if (viewport.name === "mobile" || viewport.name === "desktop") {
       await page.screenshot({ path: `.impeccable/review/${viewport.name}.png`, fullPage: true });
     }
-    await page.getByRole("button", { name: "Use dark theme" }).click();
-    await expect(page.locator("html")).toHaveAttribute("data-aramon-theme", "dark");
+    await page.getByRole("button", { name: "Use light theme" }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-aramon-theme", "light");
     await page.locator("[data-locale-control]").click();
     await page.locator("[data-locale-control]").click();
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
@@ -71,7 +71,7 @@ test("the documentation reflows at 200% zoom and keeps touch controls usable", a
   await page.goto("/");
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
-  const themeControl = await page.getByRole("button", { name: "Use dark theme" }).boundingBox();
+  const themeControl = await page.getByRole("button", { name: "Use light theme" }).boundingBox();
   expect(themeControl?.height).toBeGreaterThanOrEqual(44);
 });
 
@@ -107,7 +107,7 @@ test("the local documentation build stays inside the web-vital budgets", async (
   });
   await page.goto("/");
   await page.waitForLoadState("networkidle");
-  await page.getByRole("button", { name: "Use dark theme" }).click();
+  await page.getByRole("button", { name: "Use light theme" }).click();
   const interactionMs = await page.evaluate(() => new Promise<number>((resolve) => {
     const started = performance.now();
     requestAnimationFrame(() => requestAnimationFrame(() => resolve(performance.now() - started)));
