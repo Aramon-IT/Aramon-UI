@@ -8,9 +8,9 @@ import { SiteSearch } from "./site-search";
 import { ThemeControls } from "./theme-controls";
 
 const shellCopy = {
-  en: { search: "Search documentation", start: "Start", overview: "Overview", installation: "Installation", foundations: "Foundations", patterns: "Patterns", components: "Components", all: "All components", agents: "Agents", prompts: "Prompts", menu: "Menu" },
-  fr: { search: "Rechercher dans la documentation", start: "Démarrer", overview: "Vue d’ensemble", installation: "Installation", foundations: "Fondations", patterns: "Modèles", components: "Composants", all: "Tous les composants", agents: "Agents", prompts: "Instructions", menu: "Menu" },
-  ar: { search: "ابحث في التوثيق", start: "البداية", overview: "نظرة عامة", installation: "التثبيت", foundations: "الأسس", patterns: "الأنماط", components: "المكوّنات", all: "كل المكوّنات", agents: "الوكلاء", prompts: "التوجيهات", menu: "القائمة" },
+  en: { search: "Search documentation", start: "Start", overview: "Overview", installation: "Installation", foundations: "Foundations", patterns: "Patterns", components: "Components", all: "All components", agents: "Agents", prompts: "Prompts", skills: "Skills", elegance: "Aramon-elegance", menu: "Menu" },
+  fr: { search: "Rechercher dans la documentation", start: "Démarrer", overview: "Vue d’ensemble", installation: "Installation", foundations: "Fondations", patterns: "Modèles", components: "Composants", all: "Tous les composants", agents: "Agents", prompts: "Instructions", skills: "Compétences", elegance: "Aramon-elegance", menu: "Menu" },
+  ar: { search: "ابحث في التوثيق", start: "البداية", overview: "نظرة عامة", installation: "التثبيت", foundations: "الأسس", patterns: "الأنماط", components: "المكوّنات", all: "كل المكوّنات", agents: "الوكلاء", prompts: "التوجيهات", skills: "المهارات", elegance: "أناقة أرامون", menu: "القائمة" },
 } as const;
 
 function BrandLink({ className }: { className: string }) {
@@ -30,6 +30,7 @@ export function DocsShell({ children, current, localized = false }: { children: 
     <section><h2>{copy.components}</h2><Link aria-current={current === "components" ? "page" : undefined} href="/components">{copy.all}</Link>{featured.filter((entry) => entry.slug !== "material-background").map((entry) => <Link aria-current={current === entry.slug ? "page" : undefined} key={entry.slug} href={`/components/${entry.slug}`}>{entry.name}</Link>)}<Link aria-current={current === "material-background" ? "page" : undefined} href="/components/material-background">Background</Link></section>
     <section><h2>Loaders &amp; Preloaders</h2><Link aria-current={current === "aramon-preloader" ? "page" : undefined} href="/components/aramon-preloader">Aramon Preloader</Link></section>
     <section><h2>{copy.agents}</h2><Link href="/prompts">{copy.prompts}</Link><a href="/llms.txt">llms.txt</a><a href="/llms-full.txt">llms-full.txt</a></section>
+    <section><h2>{copy.skills}</h2><a href="/skills/aramon-audience-first-ux/SKILL.md">{copy.elegance}</a></section>
   </nav>;
   return <div className="site-shell">
     <aside className="site-rail" aria-label="Documentation navigation">
