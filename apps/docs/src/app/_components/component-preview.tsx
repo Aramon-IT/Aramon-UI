@@ -34,7 +34,7 @@ export function ComponentPreview({ slug }: { slug: string }) {
 
   if (slug === "material-background") return <MaterialBackground className="material-preview" poster="/aramon/brand/hero/aramon-hero-poster.jpg" sources={[{ src: "/aramon/brand/hero/aramon-hero.webm", type: "video/webm" }, { src: "/aramon/brand/hero/aramon-hero.mp4", type: "video/mp4" }]}><div className="material-preview-copy"><span>Aramon Shining · Background</span><strong>Make the first moment glow.</strong><Button energy="lamp">Continue</Button></div></MaterialBackground>;
 
-  if (slug === "aramon-preloader") return <div className="preloader-preview"><AramonPreloader src="/aramon/brand/preloader/preloading.mp4" poster="/aramon/brand/preloader/preloading-poster.jpg" /><div><span>Brand entry transition</span><strong>Poster first, then a calm handoff.</strong><small>Reload this preview to see the preloader.</small></div></div>;
+  if (slug === "aramon-preloader") return <div className="preloader-preview"><AramonPreloader src="/aramon/brand/preloader/preloading.mp4" poster="/aramon/brand/preloader/preloading-poster.jpg" /><div><span>Brand entry transition · looping</span><strong>Keep the first moment calm.</strong><small>The film loops until the host app passes <code>ready</code>.</small></div></div>;
 
   return <div className="generic-preview"><Button energy="lamp">Primary action</Button><Button>Secondary</Button><Button energy="quiet">Quiet</Button><Button loading loadingText="Saving">Save</Button></div>;
 }

@@ -6,11 +6,12 @@ import { cn } from "./lib/cn";
 export interface AramonPreloaderProps extends Omit<ComponentPropsWithRef<"div">, "children"> {
   src: string;
   poster: string;
+  ready?: boolean;
   minimumDuration?: number;
   onComplete?: () => void;
 }
 
-export function AramonPreloader({ className, onComplete, poster, src, minimumDuration = 900, ref, ...props }: AramonPreloaderProps) {
+export function AramonPreloader({ className, onComplete, poster, ready = false, src, minimumDuration = 900, ref, ...props }: AramonPreloaderProps) {
   const startedAt = useRef(Date.now());
   const [exiting, setExiting] = useState(false);
   const [complete, setComplete] = useState(false);
@@ -33,9 +34,13 @@ export function AramonPreloader({ className, onComplete, poster, src, minimumDur
     }, wait);
   };
 
+  useEffect(() => {
+    if (ready) finish();
+  }, [ready]);
+
   if (complete) return null;
   return <div ref={ref} role="status" aria-label="Loading Aramon" className={cn("aramon-preloader", exiting && "aramon-preloader-exiting", className)} {...props}>
-    <video autoPlay muted playsInline preload="auto" poster={poster} aria-hidden="true" onCanPlay={finish} onEnded={finish}>
+    <video autoPlay muted playsInline loop preload="auto" poster={poster} aria-hidden="true">
       <source src={src} type="video/mp4" />
     </video>
     <img src={poster} alt="" aria-hidden="true" />
