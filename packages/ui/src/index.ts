@@ -1,4 +1,5 @@
 export { Alert, type AlertProps, type AlertTone } from "./alert";
+export { AramonPreloader, type AramonPreloaderProps } from "./aramon-preloader";
 export { AnimatedList, type AnimatedListProps } from "./animated-list";
 export { Avatar, type AvatarProps, type AvatarSize, type Presence } from "./avatar";
 export { Badge, type BadgeProps, type BadgeTone } from "./badge";

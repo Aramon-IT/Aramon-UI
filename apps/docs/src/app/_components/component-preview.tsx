@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatedList } from "@aramon/ui/animated-list";
+import { AramonPreloader } from "@aramon/ui/aramon-preloader";
 import { BlurOutUp } from "@aramon/ui/blur-out-up";
 import { Button } from "@aramon/ui/button";
 import { FloatingNavbar } from "@aramon/ui/floating-navbar";
@@ -31,7 +32,9 @@ export function ComponentPreview({ slug }: { slug: string }) {
 
   if (slug === "blur-out-up") return <div className="type-preview"><BlurOutUp key={String(reveal)} className="preview-type" trigger="controlled" active={reveal}>Interfaces with a material memory.</BlurOutUp><Button onClick={() => { setReveal(false); requestAnimationFrame(() => setReveal(true)); }}>Replay</Button></div>;
 
-  if (slug === "material-background") return <MaterialBackground className="material-preview" poster="/aramon/material/material-background.webp" sources={[{ src: "/aramon/material/material-background.webm", type: "video/webm" }, { src: "/aramon/material/material-background.mp4", type: "video/mp4" }]}><div className="material-preview-copy"><span>Entry pattern</span><strong>Welcome back.</strong><Button energy="lamp">Continue</Button></div></MaterialBackground>;
+  if (slug === "material-background") return <MaterialBackground className="material-preview" poster="/aramon/brand/hero/aramon-hero-poster.jpg" sources={[{ src: "/aramon/brand/hero/aramon-hero.webm", type: "video/webm" }, { src: "/aramon/brand/hero/aramon-hero.mp4", type: "video/mp4" }]}><div className="material-preview-copy"><span>Aramon Shining · Background</span><strong>Make the first moment glow.</strong><Button energy="lamp">Continue</Button></div></MaterialBackground>;
+
+  if (slug === "aramon-preloader") return <div className="preloader-preview"><AramonPreloader src="/aramon/brand/preloader/preloading.mp4" poster="/aramon/brand/preloader/preloading-poster.jpg" /><div><span>Brand entry transition</span><strong>Poster first, then a calm handoff.</strong><small>Reload this preview to see the preloader.</small></div></div>;
 
   return <div className="generic-preview"><Button energy="lamp">Primary action</Button><Button>Secondary</Button><Button energy="quiet">Quiet</Button><Button loading loadingText="Saving">Save</Button></div>;
 }

@@ -1,0 +1,44 @@
+"use client";
+
+import { useEffect, useRef, useState, type ComponentPropsWithRef } from "react";
+import { cn } from "./lib/cn";
+
+export interface AramonPreloaderProps extends Omit<ComponentPropsWithRef<"div">, "children"> {
+  src: string;
+  poster: string;
+  minimumDuration?: number;
+  onComplete?: () => void;
+}
+
+export function AramonPreloader({ className, onComplete, poster, src, minimumDuration = 900, ref, ...props }: AramonPreloaderProps) {
+  const startedAt = useRef(Date.now());
+  const [exiting, setExiting] = useState(false);
+  const [complete, setComplete] = useState(false);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData === true;
+    if (reduceMotion || saveData) {
+      setComplete(true);
+      onComplete?.();
+    }
+  }, [onComplete]);
+
+  const finish = () => {
+    if (exiting || complete) return;
+    const wait = Math.max(0, minimumDuration - (Date.now() - startedAt.current));
+    window.setTimeout(() => {
+      setExiting(true);
+      window.setTimeout(() => { setComplete(true); onComplete?.(); }, 420);
+    }, wait);
+  };
+
+  if (complete) return null;
+  return <div ref={ref} role="status" aria-label="Loading Aramon" className={cn("aramon-preloader", exiting && "aramon-preloader-exiting", className)} {...props}>
+    <video autoPlay muted playsInline preload="auto" poster={poster} aria-hidden="true" onCanPlay={finish} onEnded={finish}>
+      <source src={src} type="video/mp4" />
+    </video>
+    <img src={poster} alt="" aria-hidden="true" />
+    <span className="sr-only">Loading</span>
+  </div>;
+}

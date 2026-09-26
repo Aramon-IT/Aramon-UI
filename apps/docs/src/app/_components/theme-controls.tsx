@@ -20,7 +20,7 @@ export function ThemeControls() {
       return () => window.removeEventListener("aramon-theme-change", notify);
     },
     () => document.documentElement.dataset.aramonTheme === "dark" ? "dark" : "light",
-    () => "light",
+    () => "dark",
   ) as Theme;
 
   const toggleTheme = () => {

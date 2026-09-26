@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" data-aramon-theme="light" data-scroll-behavior="smooth" className="h-full antialiased" suppressHydrationWarning>
-      <head><script dangerouslySetInnerHTML={{ __html: "try{if(localStorage.getItem('aramon-theme')==='dark')document.documentElement.dataset.aramonTheme='dark'}catch(e){}" }} /></head>
+    <html lang="en" data-aramon-theme="dark" data-scroll-behavior="smooth" className="h-full antialiased" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: "try{const t=localStorage.getItem('aramon-theme');if(t)document.documentElement.dataset.aramonTheme=t}catch(e){}" }} /></head>
       <body className="min-h-full"><LocaleProvider><a className="skip-link" href="#main-content">Skip to content</a>{children}</LocaleProvider></body>
     </html>
   );

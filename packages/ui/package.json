@@ -6,6 +6,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./alert": "./src/alert.tsx",
+    "./aramon-preloader": "./src/aramon-preloader.tsx",
     "./avatar": "./src/avatar.tsx",
     "./badge": "./src/badge.tsx",
     "./breadcrumb": "./src/breadcrumb.tsx",

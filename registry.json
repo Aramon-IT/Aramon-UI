@@ -180,6 +180,18 @@
       "files": [{ "path": "packages/ui/src/frame.tsx", "type": "registry:ui", "target": "~/components/aramon/frame.tsx" }]
     },
     {
+      "name": "aramon-preloader",
+      "type": "registry:ui",
+      "title": "Aramon Preloader",
+      "description": "Poster-first branded loading transition with a calm blur and fade handoff.",
+      "registryDependencies": ["aramon-base", "cn"],
+      "files": [{ "path": "packages/ui/src/aramon-preloader.tsx", "type": "registry:ui", "target": "~/components/aramon/aramon-preloader.tsx" }],
+      "assets": [
+        { "path": "apps/docs/public/aramon/brand/preloader/preloading.mp4", "target": "~/public/aramon/brand/preloader/preloading.mp4", "mimeType": "video/mp4", "sha256": "0666da47571cb602521a8e45bc23d6fa43ab030db5e96585afdfb21861ba584d" },
+        { "path": "apps/docs/public/aramon/brand/preloader/preloading-poster.jpg", "target": "~/public/aramon/brand/preloader/preloading-poster.jpg", "mimeType": "image/jpeg", "sha256": "0c19c42a59ae9f4bd45886fdd0c612f824d89161eec621b57287ad261c1de728" }
+      ]
+    },
+    {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",

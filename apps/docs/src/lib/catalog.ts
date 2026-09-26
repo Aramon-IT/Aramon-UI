@@ -35,7 +35,7 @@ const common = {
 };
 
 function item(value: Omit<CatalogItem, keyof typeof common | "install" | "source"> & Partial<typeof common>): CatalogItem {
-  const install = value.slug === "material-background"
+  const install = value.slug === "material-background" || value.slug === "aramon-preloader"
     ? "Use the repository CLI so verified video and poster assets are installed."
     : `pnpm dlx shadcn@latest add https://ui.aramon.ma/r/${value.slug}.json`;
   return { ...common, ...value, install, source: `packages/ui/src/${value.slug}.tsx` };
@@ -82,6 +82,11 @@ export const catalog: CatalogItem[] = [
   item({ slug: "material-background", name: "Material Background", category: "Motion", responsibility: "Provides the authorized iridescent film for sparse entry and confirmation compositions.", materialRole: "Material media", dependencies: ["@aramon/base", "binary assets"], states: ["Poster first", "Playing", "Paused", "Save Data", "Reduced motion"], accessibility: "Video is decorative, muted, hidden from assistive technology, and always paired with readable foreground contrast.", keyboard: "No keyboard interaction is required for decorative playback.", reducedMotion: "Renders the poster and never autoplays.", props: [
     { name: "sources", type: "MaterialBackgroundSource[]", defaultValue: "—", description: "WebM and MP4 sources in preference order." },
     { name: "poster", type: "string", defaultValue: "—", description: "Poster used before playback and for fallbacks." },
+  ] }),
+  item({ slug: "aramon-preloader", name: "Aramon Preloader", category: "Motion", responsibility: "Introduces Aramon applications with a poster-first branded loading moment and a calm blur/fade handoff.", materialRole: "Entry transition", dependencies: ["@aramon/base", "branding assets"], states: ["Loading", "Exiting", "Poster fallback", "Reduced motion", "Save Data"], accessibility: "Exposes one loading status while decorative video remains hidden from assistive technology.", keyboard: "No keyboard interaction is required; the preloader yields automatically.", reducedMotion: "Uses the poster and exits without motion.", props: [
+    { name: "src", type: "string", defaultValue: "—", description: "Public MP4 source for the branded preloader film." },
+    { name: "poster", type: "string", defaultValue: "—", description: "Immediate visual and fallback when video is unavailable." },
+    { name: "minimumDuration", type: "number", defaultValue: "900", description: "Minimum time before the handoff can begin." },
   ] }),
   item({ slug: "text-morph", name: "Text Morph", category: "Motion", responsibility: "Transitions a short opt-in phrase while preserving one intact accessible string.", dependencies: ["@aramon/base", "motion"], states: ["Word diff", "Character diff", "Reduced motion"], accessibility: "The animated tokens are hidden from assistive technology and the complete phrase is exposed once.", reducedMotion: "Substitutes text instantly.", props: [{ name: "by", type: '"word" | "character"', defaultValue: '"word"', description: "Selects the diff unit." }] }),
   item({ slug: "blur-out-up", name: "Blur Out Up", category: "Motion", responsibility: "Reveals a short expressive line with a bounded blur and rise.", dependencies: ["@aramon/base", "motion"], states: ["Mount", "Viewport", "Controlled", "Reduced motion"], accessibility: "The full text is exposed as one accessible string while visual words animate independently.", reducedMotion: "Renders final text immediately.", props: [{ name: "trigger", type: '"mount" | "viewport" | "controlled"', defaultValue: '"mount"', description: "Determines when the reveal occurs." }] }),
