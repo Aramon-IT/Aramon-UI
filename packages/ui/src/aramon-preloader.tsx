@@ -44,6 +44,12 @@ export function AramonPreloader({ className, onComplete, poster, ready = false, 
   };
 
   useEffect(() => {
+    if (usePoster || hasCompletedLoop) return;
+    const fallback = window.setTimeout(() => setHasCompletedLoop(true), 3_000);
+    return () => window.clearTimeout(fallback);
+  }, [usePoster, hasCompletedLoop]);
+
+  useEffect(() => {
     if (ready && (usePoster || hasCompletedLoop)) finish();
   }, [ready, usePoster, hasCompletedLoop]);
 
