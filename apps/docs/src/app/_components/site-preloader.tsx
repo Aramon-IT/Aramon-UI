@@ -20,5 +20,5 @@ export function SitePreloader() {
   }, [pathname]);
 
   if (pathname !== "/") return null;
-  return <AramonPreloader className="site-preloader" src="/aramon/brand/preloader/preloading.mp4" poster="/aramon/brand/preloader/preloading-poster.jpg" ready={ready} minimumDuration={900} />;
+  return <div className="site-preloader"><AramonPreloader className="site-preloader-media" src="/aramon/brand/preloader/preloading.mp4" poster="/aramon/brand/preloader/preloading-poster.jpg" ready={ready} minimumDuration={900} /></div>;
 }
