@@ -9,20 +9,25 @@ Assets:
 - `https://ui.aramon.ma/aramon/brand/preloader/preloading-poster.jpg`
 - `https://ui.aramon.ma/aramon/brand/preloader/preloading.mp4`
 
-Use the poster as the immediate visual, then preload the muted, inline video. Preserve the existing preloader behavior: autoplay when permitted, loop or finish gracefully, and transition into the application with a smooth blur-and-fade-out. Respect `prefers-reduced-motion`, Save Data, and slow connections by keeping the poster visible and skipping playback when appropriate. The video is decorative and must remain hidden from assistive technology.
+Use a solid black page backdrop with a centered square viewport no larger than 500px (`min(500px, 86vw)`). Preserve the original composition with `object-fit: contain`; do not crop or stretch the film. Use the poster as the immediate visual, then preload the muted, inline video. Preserve the existing preloader behavior: autoplay when permitted, loop until the host app is ready, and transition into the application with a 420–650ms blur-and-opacity fade-out. Respect `prefers-reduced-motion`, Save Data, and slow connections by keeping the poster visible and skipping playback when appropriate. The video is decorative and must remain hidden from assistive technology.
 
 ```tsx
-<video
-  autoPlay
-  muted
-  playsInline
-  loop
-  preload="auto"
-  poster="/aramon/brand/preloader/preloading-poster.jpg"
-  aria-hidden="true"
->
-  <source src="/aramon/brand/preloader/preloading.mp4" type="video/mp4" />
-</video>
+<div style={{ minHeight: "100dvh", display: "grid", placeItems: "center", background: "#000" }}>
+  <div style={{ width: "min(500px, 86vw)", aspectRatio: "1", background: "#000" }}>
+    <video
+      autoPlay
+      muted
+      playsInline
+      loop
+      preload="auto"
+      poster="/aramon/brand/preloader/preloading-poster.jpg"
+      aria-hidden="true"
+      style={{ width: "100%", height: "100%", objectFit: "contain" }}
+    >
+      <source src="/aramon/brand/preloader/preloading.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
 ```
 
 ## Landing hero
