@@ -10,6 +10,7 @@ for (const viewport of viewports) {
   test(`${viewport.name} homepage supports light, dark, and RTL`, async ({ page }) => {
     await page.setViewportSize(viewport);
     await page.goto("/");
+    await expect(page.locator(".site-preloader")).toBeHidden();
     await expect(page.getByRole("heading", { name: "Interfaces with a material memory." })).toBeVisible();
     await expect(page.locator("html")).toHaveAttribute("data-aramon-theme", "dark");
     if (viewport.name === "mobile" || viewport.name === "desktop") {
@@ -46,6 +47,7 @@ test("component detail, interaction, and recipes remain accessible", async ({ pa
 test("mobile navigation and installation path are complete", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
+  await expect(page.locator(".site-preloader")).toBeHidden();
   await page.getByText("Menu", { exact: true }).click();
   await expect(page.getByRole("navigation", { name: "Documentation" }).last()).toBeVisible();
   await page.getByRole("link", { name: "Installation" }).last().click();
@@ -69,6 +71,7 @@ test("the documentation reflows at 200% zoom and keeps touch controls usable", a
   // 780px-wide browser at 200% zoom, without relying on browser chrome APIs.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
+  await expect(page.locator(".site-preloader")).toBeHidden();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
   const themeControl = await page.getByRole("button", { name: "Use light theme" }).boundingBox();
@@ -78,6 +81,7 @@ test("the documentation reflows at 200% zoom and keeps touch controls usable", a
 test("reduced motion uses the material poster", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
+  await expect(page.locator(".site-preloader")).toBeHidden();
   await expect(page.locator(".material-home img")).toBeVisible();
   await expect(page.locator(".material-home video")).toHaveCount(0);
 });
