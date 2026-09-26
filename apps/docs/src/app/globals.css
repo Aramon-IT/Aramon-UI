@@ -120,7 +120,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .navbar-preview { position: relative; min-height: 360px; background: var(--aramon-desk-subtle); }
 .type-preview { display: grid; place-items: center; align-content: center; gap: 36px; }
 .preview-type { font-size: clamp(28px, 4vw, 52px); font-weight: 650; line-height: 1.05; letter-spacing: -.04em; }
-.material-preview { min-height: 500px; border-radius: 0; }
+.material-gallery { display: grid; gap: 16px; padding: 16px; background: var(--aramon-well); }
+.material-preview { min-height: 500px; border-radius: var(--aramon-radius-surface); }
 .material-preview-copy { min-height: 500px; padding: 44px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; color: white; }
 .material-preview-copy span { font-size: 12px; opacity: .7; }
 .material-preview-copy strong { margin-block: 10px 24px; font-size: clamp(42px, 6vw, 72px); letter-spacing: -.05em; }
