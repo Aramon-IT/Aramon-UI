@@ -22,6 +22,7 @@ NON-NEGOTIABLE RULES
 - Canvas physics begins with user intent and returns to calm. A subtle transform-only optical drift may establish living Medium, but must stop for reduced motion.
 - Provide reduced-motion, flat-material, keyboard, touch, and low-performance fallbacks.
 - Do not apply glass, gradients, glow, pills, or shadows decoratively.
+- For the branded preloader, use a solid black backdrop and a centered square viewport capped at min(500px, 86vw). Keep the original composition with object-fit: contain; never stretch or crop it with full-screen object-fit: cover. Use poster-first preload="auto", muted autoplay, playsInline, and loop, retain the poster for reduced-motion or Save Data, and fade out only after the host app signals readiness.
 
 CORE TOKENS
 Dark Desk: #0D0C0E. Light Desk: #E9F0EF.
