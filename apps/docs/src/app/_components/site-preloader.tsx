@@ -7,6 +7,7 @@ import { AramonPreloader } from "@aramon/ui/aramon-preloader";
 export function SitePreloader() {
   const pathname = usePathname();
   const [ready, setReady] = useState(false);
+  const [complete, setComplete] = useState(false);
 
   useEffect(() => {
     if (pathname !== "/") return;
@@ -19,6 +20,6 @@ export function SitePreloader() {
     return () => window.removeEventListener("load", finish);
   }, [pathname]);
 
-  if (pathname !== "/") return null;
-  return <div className="site-preloader"><AramonPreloader className="site-preloader-media" src="/aramon/brand/preloader/preloading.mp4" poster="/aramon/brand/preloader/preloading-poster.jpg" ready={ready} minimumDuration={900} /></div>;
+  if (pathname !== "/" || complete) return null;
+  return <div className="site-preloader"><AramonPreloader className="site-preloader-media" src="/aramon/brand/preloader/preloading.mp4" poster="/aramon/brand/preloader/preloading-poster.jpg" ready={ready} minimumDuration={900} onComplete={() => setComplete(true)} /></div>;
 }
