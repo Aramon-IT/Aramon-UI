@@ -135,6 +135,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .aramon-preloader img { z-index: 0; }
 .aramon-preloader::after { content: ""; position: absolute; z-index: 2; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / .08), rgb(0 0 0 / .5)); }
 .aramon-preloader-exiting { opacity: 0; filter: blur(10px); pointer-events: none; }
+.site-preloader { position: fixed; inset: 0; z-index: 1000; }
 .detail-grid { padding-block-start: 72px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: clamp(48px, 7vw, 88px); }
 .detail-copy > section { padding-block: 0 56px; margin-block-end: 56px; border-block-end: 1px solid var(--aramon-hairline); }
 .detail-copy h2, .api-panel h2, .foundation-section h2, .recipe-notes h2, .pattern-rules h2 { margin: 0 0 22px; font-size: 26px; letter-spacing: -.03em; }
