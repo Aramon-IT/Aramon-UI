@@ -11,6 +11,11 @@
 
 The public registry verifies byte size and checksum before installing these binary assets.
 
+## Branding media
+
+- `aramon/brand/preloader/preloading.mp4` and `preloading-poster.jpg`: user-provided public assets from the Aramon landing application; reusable preloader treatment documented in `docs/BRAND-MATERIALS.md`.
+- `aramon/brand/hero/aramon-hero.webm`, `aramon-hero.mp4`, and `aramon-hero-poster.jpg`: user-provided public assets from the Aramon landing application; reusable centered hero treatment with dark scrim documented in `docs/BRAND-MATERIALS.md`.
+
 ## Aramon header logos
 
 - Source: `Aramon Official Logo.png`, supplied by the Aramon team for dark-theme use.
