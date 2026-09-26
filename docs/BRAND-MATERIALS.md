@@ -9,7 +9,7 @@ Assets:
 - `https://ui.aramon.ma/aramon/brand/preloader/preloading-poster.jpg`
 - `https://ui.aramon.ma/aramon/brand/preloader/preloading.mp4`
 
-Use a solid black page backdrop with a centered square viewport no larger than 500px (`min(500px, 86vw)`). Preserve the original composition with `object-fit: contain`; do not crop or stretch the film. Use the poster as the immediate visual, then preload the muted, inline video. Preserve the existing preloader behavior: autoplay when permitted, loop until the host app is ready, and transition into the application with an 800ms blur-and-opacity fade-out. Respect `prefers-reduced-motion`, Save Data, and slow connections by keeping the poster visible and skipping playback when appropriate. The video is decorative and must remain hidden from assistive technology.
+Use a solid black page backdrop with a centered square viewport no larger than 500px (`min(500px, 86vw)`). Preserve the original composition with `object-fit: contain`; do not scale or crop the film. The supplied preloader has a right-edge star artifact, so apply only a responsive internal black edge mask (`clamp(72px, 20vw, 120px)`) inside the square; never enlarge the video to hide it. Use the poster as the immediate visual, then preload the muted, inline video. Preserve the existing preloader behavior: autoplay when permitted, loop until the host app is ready, and transition into the application with an 800ms blur-and-opacity fade-out. Respect `prefers-reduced-motion`, Save Data, and slow connections by keeping the poster visible and skipping playback when appropriate. The video is decorative and must remain hidden from assistive technology.
 
 ```tsx
 <div style={{ minHeight: "100dvh", display: "grid", placeItems: "center", background: "#000" }}>
